@@ -3,8 +3,7 @@ title: Durex API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
+  - go
   - javascript
 
 toc_footers:
