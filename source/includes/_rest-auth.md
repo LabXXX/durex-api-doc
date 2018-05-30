@@ -195,7 +195,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 > Example request
 
 ```curl
-curl https://durex/v2/auth/r/orders/<Symbol>
+curl https://durex/v2/auth/r/orders/tBTCUSD
 ```
 
 > Example Response

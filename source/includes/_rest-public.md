@@ -172,7 +172,7 @@ Trades endpoint includes all the pertinent details of the trade, such as price, 
 > Example request
 
 ```curl
-curl https://durex/v2/ticker/tBTCUSD
+curl https://durex/v2/book/tBTCUSD/P0
 ```
 
 > Example Response
