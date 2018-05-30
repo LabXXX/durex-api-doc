@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Durex API Reference</title>
+    <title>DurEX API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;curl&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="curl">curl</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,28 +222,77 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#rest" class="toc-h1 toc-link" data-title="rest">REST</a>
-          </li>
-          <li>
-            <a href="#websocket" class="toc-h1 toc-link" data-title="websocket">Websocket</a>
+            <a href="#rest-public-endpoints" class="toc-h1 toc-link" data-title="rest-public-endpoints">REST Public Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-durexs" class="toc-h2 toc-link" data-title="get-all-durexs">Get All DurEXs</a>
+                    <a href="#symbols" class="toc-h2 toc-link" data-title="symbols">Symbols</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-durex" class="toc-h2 toc-link" data-title="get-a-specific-durex">Get a Specific DurEX</a>
+                    <a href="#platform-status" class="toc-h2 toc-link" data-title="platform-status">Platform Status</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-durex" class="toc-h2 toc-link" data-title="delete-a-specific-durex">Delete a Specific DurEX</a>
+                    <a href="#tickers" class="toc-h2 toc-link" data-title="tickers">Tickers</a>
+                  </li>
+                  <li>
+                    <a href="#ticker" class="toc-h2 toc-link" data-title="ticker">Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#trades" class="toc-h2 toc-link" data-title="trades">Trades</a>
+                  </li>
+                  <li>
+                    <a href="#books" class="toc-h2 toc-link" data-title="books">Books</a>
+                  </li>
+                  <li>
+                    <a href="#candles" class="toc-h2 toc-link" data-title="candles">Candles</a>
+                  </li>
+                  <li>
+                    <a href="#time" class="toc-h2 toc-link" data-title="time">Time</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#rest-authenticated-endpoints" class="toc-h1 toc-link" data-title="rest-authenticated-endpoints">REST Authenticated Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#wallet-balances" class="toc-h2 toc-link" data-title="wallet-balances">Wallet Balances</a>
+                  </li>
+                  <li>
+                    <a href="#withdrawal" class="toc-h2 toc-link" data-title="withdrawal">Withdrawal</a>
+                  </li>
+                  <li>
+                    <a href="#new-order" class="toc-h2 toc-link" data-title="new-order">New Order</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-order" class="toc-h2 toc-link" data-title="cancel-order">Cancel Order</a>
+                  </li>
+                  <li>
+                    <a href="#order-status" class="toc-h2 toc-link" data-title="order-status">Order Status</a>
+                  </li>
+                  <li>
+                    <a href="#active-orders" class="toc-h2 toc-link" data-title="active-orders">Active Orders</a>
+                  </li>
+                  <li>
+                    <a href="#orders-history" class="toc-h2 toc-link" data-title="orders-history">Orders History</a>
+                  </li>
+                  <li>
+                    <a href="#past-trades" class="toc-h2 toc-link" data-title="past-trades">Past Trades</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-public-channels" class="toc-h1 toc-link" data-title="websocket-public-channels">Websocket Public Channels</a>
+          </li>
+          <li>
+            <a href="#websocket-authenticated-channels" class="toc-h1 toc-link" data-title="websocket-authenticated-channels">Websocket Authenticated Channels</a>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -251,227 +300,773 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access DurEX API endpoints, which can get information on DurEX platform.</p>
-<h1 id='rest'>REST</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>API Endpoint</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre class="highlight plaintext"><code>https://durex
+</code></pre>
+<p>DurEX provides a simple and powerful REST API to integrate bitcoin, bitcoin cash, litecoin and ethereum payments into your business or application.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<p>This API reference provides information on available endpoints and how to interact with it. To read more about the API, visit our API documentation.</p>
+<h1 id='rest-public-endpoints'>REST Public Endpoints</h1><h2 id='symbols'>Symbols</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v1/symbols
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='websocket'>Websocket</h1><h2 id='get-all-durexs'>Get All DurEXs</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="no">DurEXs</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">DurEXs</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/DurEXs"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">DurEXs</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">DurEXs</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tLTCUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tLTCBTC"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all DurEXs.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/DurEXs</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include DurEXs that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy DurEX is an authenticated DurEX!
-</aside>
-<h2 id='get-a-specific-durex'>Get a Specific DurEX</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="no">DurEXs</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">DurEXs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/DurEXs/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">DurEXs</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<p>A list of symbol names.</p>
+<h3 id='http-request'>HTTP REQUEST</h3>
+<p><code>GET /v1/symbols</code></p>
+<h2 id='platform-status'>Platform Status</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/platform/status
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="err">OPERATIVE</span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific DurEX.</p>
+<p>Get the current status of the platform.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/DurEXs/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the DurEX to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-durex'>Delete a Specific DurEX</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Maintenance periods last for just few minutes and might be necessary from time to time during upgrades of core components of our infrastructure.
+Even if rare it is important to have a way to notify users.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="no">DurEXs</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">DurEXs</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/DurEXs/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">DurEXs</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<p>For a real-time notification we suggest to use websockets and listen to events 20060/20061</p>
+<h3 id='http-request-2'>HTTP REQUEST</h3>
+<p><code>GET /v2/platform/status</code></p>
+<h2 id='tickers'>Tickers</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/tickers?symbols=tBTCUSD,tLTCUSD,fUSD
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+    </span><span class="err">BID</span><span class="p">,</span><span class="w">
+    </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
+    </span><span class="err">ASK</span><span class="p">,</span><span class="w">
+    </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
+    </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
+    </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
+    </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
+    </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+    </span><span class="err">LOW</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific DurEX.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/DurEXs/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.</p>
+<h3 id='http-request-3'>HTTP REQUEST</h3>
+<p><code>GET /v2/tickers</code></p>
+<h3 id='arguments'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the DurEX to delete</td>
+<td>symbols</td>
+<td>string</td>
+<td>Required</td>
+<td>The symbols you want information about. ex: tBTCUSD,fUSD</td>
 </tr>
 </tbody></table>
+<h2 id='ticker'>Ticker</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/ticker/tBTCUSD
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="err">BID</span><span class="p">,</span><span class="w">
+  </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
+  </span><span class="err">ASK</span><span class="p">,</span><span class="w">
+  </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
+  </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
+  </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
+  </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
+  </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+  </span><span class="err">LOW</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.</p>
+<h3 id='http-request-4'>HTTP REQUEST</h3>
+<p><code>GET /v2/ticker/&lt;Symbol&gt;</code></p>
+<h3 id='arguments-2'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>The symbol you want information about. You can find the list of valid symbols by calling the /symbols endpoint.</td>
+</tr>
+</tbody></table>
+<h2 id='trades'>Trades</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/trades/tBTCUSD/hist
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">MTS</span><span class="p">,</span><span class="w">
+    </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">PRICE</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Trades endpoint includes all the pertinent details of the trade, such as price, size and time.</p>
+<h3 id='http-request-5'>HTTP REQUEST</h3>
+<p><code>GET /v2/trades/&lt;Symbol&gt;/hist</code></p>
+<h3 id='arguments-3'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>The symbol you want information about.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>int32</td>
+<td>Optional</td>
+<td>Number of records</td>
+</tr>
+<tr>
+<td>start</td>
+<td>string</td>
+<td>Optional</td>
+<td>Millisecond start time</td>
+</tr>
+<tr>
+<td>end</td>
+<td>string</td>
+<td>Optional</td>
+<td>Millisecond end time</td>
+</tr>
+</tbody></table>
+<h2 id='books'>Books</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/ticker/tBTCUSD
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">COUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">AMOUNT</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>The Order Books channel allow you to keep track of the state of the Bitfinex order book.
+It is provided on a price aggregated basis, with customizable precision.</p>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
+<p><code>GET /v2/book/&lt;Symbol&gt;/&lt;Precision&gt;</code></p>
+<h3 id='arguments-4'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>The symbol you want information about. You can find the list of valid symbols by calling the /symbols endpoint.</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>string</td>
+<td>Required</td>
+<td>Level of price aggregation (P0, P1, P2, P3, R0)</td>
+</tr>
+<tr>
+<td>len</td>
+<td>int32</td>
+<td>Optional</td>
+<td>Number of price points (&quot;25&quot;, &quot;100&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='candles'>Candles</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/candles/trade:1m:tBTCUSD/last
+
+curl https://durex/v2/candles/trade:1m:tBTCUSD/hist
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Section</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"last"</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="err">MTS</span><span class="p">,</span><span class="w">
+  </span><span class="err">OPEN</span><span class="p">,</span><span class="w">
+  </span><span class="err">CLOSE</span><span class="p">,</span><span class="w">
+  </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+  </span><span class="err">LOW</span><span class="p">,</span><span class="w">
+  </span><span class="err">VOLUME</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Section</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"hist"</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w"> </span><span class="err">MTS</span><span class="p">,</span><span class="w"> </span><span class="err">OPEN</span><span class="p">,</span><span class="w"> </span><span class="err">CLOSE</span><span class="p">,</span><span class="w"> </span><span class="err">HIGH</span><span class="p">,</span><span class="w"> </span><span class="err">LOW</span><span class="p">,</span><span class="w"> </span><span class="err">VOLUME</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Provides a way to access charting candle info</p>
+<h3 id='http-reqeust'>HTTP REQEUST</h3>
+<p><code>GET /v2/candles/trade:&lt;TimeFrame&gt;:&lt;Symbol&gt;/&lt;Section&gt;</code></p>
+<h3 id='arguments-5'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TimeFrame</td>
+<td>string</td>
+<td>Required</td>
+<td>Available values: &#39;1m&#39;, &#39;5m&#39;, &#39;15m&#39;, &#39;30m&#39;, &#39;1h&#39;, &#39;3h&#39;, &#39;6h&#39;, &#39;12h&#39;, &#39;1D&#39;, &#39;7D&#39;, &#39;14D&#39;, &#39;1M&#39;</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>The symbol you want information about.</td>
+</tr>
+<tr>
+<td>Section</td>
+<td>string</td>
+<td>Required</td>
+<td>Available values: &quot;last&quot;, &quot;hist&quot;</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>int32</td>
+<td>Optional</td>
+<td>Number of candles requested</td>
+</tr>
+<tr>
+<td>start</td>
+<td>string</td>
+<td>Optional</td>
+<td>Filter start (ms)</td>
+</tr>
+<tr>
+<td>end</td>
+<td>string</td>
+<td>Optional</td>
+<td>Filter end (ms)</td>
+</tr>
+</tbody></table>
+<h2 id='time'>Time</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/time
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="mi">1435082571</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Get the API server time</p>
+<h3 id='http-request-7'>HTTP REQUEST</h3>
+<p><code>GET /v2/time</code></p>
+<h1 id='rest-authenticated-endpoints'>REST Authenticated Endpoints</h1><h2 id='authentication'>Authentication</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code></code></pre><h3 id='http-request'>HTTP REQUEST</h3>
+<p><code>POST</code></p>
+<h2 id='wallet-balances'>Wallet Balances</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v1/balances
+</code></pre>
+<p>See your balances</p>
+<h3 id='http-request-2'>HTTP REQUEST</h3>
+<p><code>POST /v1/balances</code></p>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">WALLET_TYPE</span><span class="p">,</span><span class="w">
+    </span><span class="err">CURRENCY</span><span class="p">,</span><span class="w">
+    </span><span class="err">BALANCE</span><span class="p">,</span><span class="w">
+    </span><span class="err">UNSETTLED_INTEREST</span><span class="p">,</span><span class="w">
+    </span><span class="err">BALANCE_AVAILABLE</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h2 id='withdrawal'>Withdrawal</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v1/withdraw
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">WITHDRAWAL_ID</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Allow you to request a withdrawal from one of your wallet.</p>
+<h3 id='http-request-3'>HTTP REQUEST</h3>
+<p><code>POST /v1/withdraw</code></p>
+<h3 id='arguments'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>Required</td>
+<td>Amount to withdraw.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Required</td>
+<td>Destination address for withdrawal.</td>
+</tr>
+</tbody></table>
+<h2 id='new-order'>New Order</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v1/order/new
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">ID</span><span class="p">,</span><span class="w">
+  </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
+  </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+  </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
+  </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">PRICE_AVG</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Submit a new Order</p>
+<h3 id='http-request-4'>HTTP REQUEST</h3>
+<p><code>POST /v1/order/new</code></p>
+<h3 id='arguments-2'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>The name of the symbol (see /symbols).</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>Required</td>
+<td>Order size: how much you want to buy or sell</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>Required</td>
+<td>Price to buy or sell at. Must be positive. Use random number for market orders.</td>
+</tr>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>Required</td>
+<td>Either “buy” or “sell”.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Required</td>
+<td>Either “market” / “limit”</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-order'>Cancel Order</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v1/order/cancel
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">ID</span><span class="p">,</span><span class="w">
+  </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
+  </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+  </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
+  </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">PRICE_AVG</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Cancel an order.</p>
+<h3 id='http-request-5'>HTTP REQUEST</h3>
+<p><code>POST /v1/order/cancel</code></p>
+<h3 id='arguments-3'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_id</td>
+<td>int64</td>
+<td>Required</td>
+<td>The order ID given by /order/new.</td>
+</tr>
+</tbody></table>
+<h2 id='order-status'>Order Status</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v1/order/status
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">ID</span><span class="p">,</span><span class="w">
+  </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
+  </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+  </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
+  </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">PRICE_AVG</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.</p>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
+<p><code>POST /v1/order/status</code></p>
+<h3 id='arguments-4'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_id</td>
+<td>int64</td>
+<td>Required</td>
+<td>The order ID given by /order/new.</td>
+</tr>
+</tbody></table>
+<h2 id='active-orders'>Active Orders</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/auth/r/orders/&lt;Symbol&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+    </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
+    </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+    </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
+    </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">PRICE_AVG</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>View your active orders.</p>
+<h3 id='http-request-7'>HTTP REQUEST</h3>
+<p><code>POST /v2/auth/r/orders/&lt;Symbol&gt;</code></p>
+<h3 id='arguments-5'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>Symbol (tBTCUSD, ...)</td>
+</tr>
+</tbody></table>
+<h2 id='orders-history'>Orders History</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/auth/r/orders/tBTCUSD/hist
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+    </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
+    </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+    </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
+    </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">PRICE_AVG</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns the most recent closed or canceled orders up to circa two weeks ago</p>
+<h3 id='http-request-8'>HTTP REQUEST</h3>
+<p><code>POST /v2/auth/r/orders/tBTCUSD/hist</code></p>
+<h3 id='arguments-6'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>Symbol (tBTCUSD, ...)</td>
+</tr>
+<tr>
+<td>start</td>
+<td>string</td>
+<td>Optional</td>
+<td>Millisecond start time</td>
+</tr>
+<tr>
+<td>end</td>
+<td>string</td>
+<td>Optional</td>
+<td>Millisecond end time</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>int32</td>
+<td>Optional</td>
+<td>Number of records</td>
+</tr>
+</tbody></table>
+<h2 id='past-trades'>Past Trades</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl https://durex/v2/auth/r/trades/tBTCUSD/hist
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">PAIR</span><span class="p">,</span><span class="w">
+    </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">ORDER_ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">EXEC_AMOUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">EXEC_PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">ORDER_TYPE</span><span class="p">,</span><span class="w">
+    </span><span class="err">ORDER_PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">MAKER</span><span class="p">,</span><span class="w">
+    </span><span class="err">FEE</span><span class="p">,</span><span class="w">
+    </span><span class="err">FEE_CURRENCY</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>View your past trades.</p>
+<h3 id='http-request-9'>HTTP REQUEST</h3>
+<p><code>POST /v2/auth/r/trades/&lt;Symbol&gt;/hist</code></p>
+<h3 id='arguments-7'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>Symbol (tBTCUSD, ...)</td>
+</tr>
+<tr>
+<td>start</td>
+<td>string</td>
+<td>Optional</td>
+<td>Millisecond start time</td>
+</tr>
+<tr>
+<td>end</td>
+<td>string</td>
+<td>Optional</td>
+<td>Millisecond end time</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>int32</td>
+<td>Optional</td>
+<td>Number of records</td>
+</tr>
+</tbody></table>
+<h1 id='websocket-public-channels'>Websocket Public Channels</h1>
+<p>TBD</p>
+<h1 id='websocket-authenticated-channels'>Websocket Authenticated Channels</h1>
+<p>TBD</p>
 <h1 id='errors'>Errors</h1>
-<p>The DurEX API uses the following error codes:</p>
+<p>DurEX uses the following error codes:</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Code</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>200</td>
-<td>Success -- Your request is valid.</td>
-</tr>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Invalid request</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Invalid auth</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>User hasn&#39;t authenticated necessary scope</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Resource not found</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>429</td>
+<td>Rate limit exceeded</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal server error</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Service unavailable</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="curl">curl</a>
           </div>
       </div>
     </div>
