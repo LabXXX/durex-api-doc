@@ -195,7 +195,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 > Example request
 
 ```curl
-curl https://durex/v2/auth/r/orders/:Symbol
+curl https://durex/v2/auth/r/orders/<Symbol>
 ```
 
 > Example Response
@@ -222,7 +222,7 @@ View your active orders.
 
 ### HTTP REQUEST
 
-`POST /v2/auth/r/orders/:Symbol`
+`POST /v2/auth/r/orders/<Symbol>`
 
 ### ARGUMENTS
 
@@ -306,7 +306,7 @@ View your past trades.
 
 ### HTTP REQUEST
 
-`POST /v2/auth/r/trades/:Symbol/hist`
+`POST /v2/auth/r/trades/<Symbol>/hist`
 
 ### ARGUMENTS
 

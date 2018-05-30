@@ -122,7 +122,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 
 ### HTTP REQUEST
 
-`GET /v2/ticker/:Symbol`
+`GET /v2/ticker/<Symbol>`
 
 ### ARGUMENTS
 
@@ -156,7 +156,7 @@ Trades endpoint includes all the pertinent details of the trade, such as price, 
 
 ### HTTP REQUEST
 
-`GET /v2/trades/:Symbol/hist`
+`GET /v2/trades/<Symbol>/hist`
 
 ### ARGUMENTS
 
@@ -193,7 +193,7 @@ It is provided on a price aggregated basis, with customizable precision.
 
 ### HTTP REQUEST
 
-`GET /v2/book/:Symbol/precision`
+`GET /v2/book/<Symbol>/<Precision>`
 
 ### ARGUMENTS
 
@@ -237,7 +237,7 @@ Provides a way to access charting candle info
 
 ### HTTP REQEUST
 
-`GET /v2/candles/trade::TimeFrame::Symbol/Section`
+`GET /v2/candles/trade:<TimeFrame>:<Symbol>/<Section>`
 
 ### ARGUMENTS
 
