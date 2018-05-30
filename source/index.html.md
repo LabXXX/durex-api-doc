@@ -1,20 +1,17 @@
 ---
-title: Durex API Reference
+title: DurEX API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  #- go
-  #- javascript
-  #- python
-  #- ruby
+  - curl
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - rest.md
-  - websocket.md
+  - rest-public
+  - rest-auth
+  - ws-public
+  - ws-auth
   - errors
 
 search: true
@@ -22,7 +19,12 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access DurEX API endpoints, which can get information on DurEX platform.
+> API Endpoint
 
+```
+https://durex
+```
 
+DurEX provides a simple and powerful REST API to integrate bitcoin, bitcoin cash, litecoin and ethereum payments into your business or application.
 
+This API reference provides information on available endpoints and how to interact with it. To read more about the API, visit our API documentation.

@@ -1,0 +1,4 @@
+
+# Websocket Authenticated Channels
+
+TBD
