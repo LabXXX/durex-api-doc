@@ -12,14 +12,17 @@ curl https://durex/v1/symbols
 
 ```json
 [
-  "tBTCUSD",
-  "tLTCUSD",
-  "tLTCBTC",
+  [
+    SYMBOL,
+    PRICE_PRECISION,
+    MINIMUM_ORDER_SIZE,
+    MAXIMUM_ORDER_SIZE
+  ],
   ...
 ]
 ```
 
-A list of symbol names.
+Get a list of valid symbol IDs and the pair details.
 
 ### HTTP REQUEST
 
