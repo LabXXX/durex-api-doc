@@ -318,13 +318,16 @@
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tLTCUSD"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tLTCBTC"</span><span class="p">,</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+    </span><span class="err">PRICE_PRECISION</span><span class="p">,</span><span class="w">
+    </span><span class="err">MINIMUM_ORDER_SIZE</span><span class="p">,</span><span class="w">
+    </span><span class="err">MAXIMUM_ORDER_SIZE</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>A list of symbol names.</p>
+<p>Get a list of valid symbol IDs and the pair details.</p>
 <h3 id='http-request'>HTTP REQUEST</h3>
 <p><code>GET /v1/symbols</code></p>
 <h2 id='platform-status'>Platform Status</h2>
