@@ -33,7 +33,7 @@ Get a list of valid symbol IDs and the pair details.
 > Example request
 
 ```curl
-curl https://durex/v2/platform/status
+curl https://durex/v1/platform/status
 ```
 
 > Example Response
@@ -51,14 +51,14 @@ For a real-time notification we suggest to use websockets and listen to events 2
 
 ### HTTP REQUEST
 
-`GET /v2/platform/status`
+`GET /v1/platform/status`
 
 ## Tickers
 
 > Example request
 
 ```curl
-curl https://durex/v2/tickers?symbols=tBTCUSD,tLTCUSD
+curl https://durex/v1/tickers?symbols=tBTCUSD,tLTCUSD
 ```
 
 > Example Response
@@ -87,7 +87,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 
 ### HTTP REQUEST
 
-`GET /v2/tickers`
+`GET /v1/tickers`
 
 ### ARGUMENTS
 
@@ -100,7 +100,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 > Example request
 
 ```curl
-curl https://durex/v2/ticker/tBTCUSD
+curl https://durex/v1/ticker/tBTCUSD
 ```
 
 > Example Response
@@ -125,7 +125,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 
 ### HTTP REQUEST
 
-`GET /v2/ticker/<Symbol>`
+`GET /v1/ticker/<Symbol>`
 
 ### ARGUMENTS
 
@@ -138,7 +138,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 > Example request
 
 ```curl
-curl https://durex/v2/trades/tBTCUSD/hist
+curl https://durex/v1/trades/tBTCUSD/hist
 ```
 
 > Example Response
@@ -159,7 +159,7 @@ Trades endpoint includes all the pertinent details of the trade, such as price, 
 
 ### HTTP REQUEST
 
-`GET /v2/trades/<Symbol>/hist`
+`GET /v1/trades/<Symbol>/hist`
 
 ### ARGUMENTS
 
@@ -175,7 +175,7 @@ Trades endpoint includes all the pertinent details of the trade, such as price, 
 > Example request
 
 ```curl
-curl https://durex/v2/book/tBTCUSD/P0
+curl https://durex/v1/book/tBTCUSD/P0
 ```
 
 > Example Response
@@ -196,7 +196,7 @@ It is provided on a price aggregated basis, with customizable precision.
 
 ### HTTP REQUEST
 
-`GET /v2/book/<Symbol>/<Precision>`
+`GET /v1/book/<Symbol>/<Precision>`
 
 ### ARGUMENTS
 
@@ -211,9 +211,9 @@ It is provided on a price aggregated basis, with customizable precision.
 > Example request
 
 ```curl
-curl https://durex/v2/candles/trade:1m:tBTCUSD/last
+curl https://durex/v1/candles/trade:1m:tBTCUSD/last
 
-curl https://durex/v2/candles/trade:1m:tBTCUSD/hist
+curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 ```
 
 > Example Response
@@ -240,7 +240,7 @@ Provides a way to access charting candle info
 
 ### HTTP REQEUST
 
-`GET /v2/candles/trade:<TimeFrame>:<Symbol>/<Section>`
+`GET /v1/candles/trade:<TimeFrame>:<Symbol>/<Section>`
 
 ### ARGUMENTS
 
@@ -258,7 +258,7 @@ Provides a way to access charting candle info
 > Example request
 
 ```curl
-curl https://durex/v2/time
+curl https://durex/v1/time
 ```
 
 > Example Response
@@ -273,4 +273,4 @@ Get the API server time
 
 ### HTTP REQUEST
 
-`GET /v2/time`
+`GET /v1/time`

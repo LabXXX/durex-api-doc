@@ -195,7 +195,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 > Example request
 
 ```curl
-curl https://durex/v2/auth/r/orders/tBTCUSD
+curl https://durex/v1/auth/r/orders/tBTCUSD
 ```
 
 > Example Response
@@ -222,7 +222,7 @@ View your active orders.
 
 ### HTTP REQUEST
 
-`POST /v2/auth/r/orders/<Symbol>`
+`POST /v1/auth/r/orders/<Symbol>`
 
 ### ARGUMENTS
 
@@ -235,7 +235,7 @@ View your active orders.
 > Example request
 
 ```curl
-curl https://durex/v2/auth/r/orders/tBTCUSD/hist
+curl https://durex/v1/auth/r/orders/tBTCUSD/hist
 ```
 
 > Example Response
@@ -262,7 +262,7 @@ Returns the most recent closed or canceled orders up to circa two weeks ago
 
 ### HTTP REQUEST
 
-`POST /v2/auth/r/orders/tBTCUSD/hist`
+`POST /v1/auth/r/orders/tBTCUSD/hist`
 
 ### ARGUMENTS
 
@@ -278,7 +278,7 @@ Returns the most recent closed or canceled orders up to circa two weeks ago
 > Example request
 
 ```curl
-curl https://durex/v2/auth/r/trades/tBTCUSD/hist
+curl https://durex/v1/auth/r/trades/tBTCUSD/hist
 ```
 
 > Example Response
@@ -306,7 +306,7 @@ View your past trades.
 
 ### HTTP REQUEST
 
-`POST /v2/auth/r/trades/<Symbol>/hist`
+`POST /v1/auth/r/trades/<Symbol>/hist`
 
 ### ARGUMENTS
 
