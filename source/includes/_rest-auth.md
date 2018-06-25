@@ -29,7 +29,7 @@ See your balances
 
 ### HTTP REQUEST
 
-`POST /v1/balances`
+`POST /v1/auth/r/balances`
 
 > Example Response
 
@@ -66,7 +66,7 @@ Allow you to request a withdrawal from one of your wallet.
 
 ### HTTP REQUEST
 
-`POST /v1/withdraw`
+`POST /v1/auth/w/withdraw`
 
 ### ARGUMENTS
 
@@ -104,7 +104,7 @@ Submit a new Order
 
 ### HTTP REQUEST
 
-`POST /v1/order/new`
+`POST /v1/auth/w/order/new`
 
 ### ARGUMENTS
 
@@ -145,7 +145,7 @@ Cancel an order.
 
 ### HTTP REQUEST
 
-`POST /v1/order/cancel`
+`POST /v1/auth/w/order/cancel`
 
 ### ARGUMENTS
 
@@ -182,7 +182,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 
 ### HTTP REQUEST
 
-`POST /v1/order/status`
+`POST /v1/auth/r/order/status`
 
 ### ARGUMENTS
 
