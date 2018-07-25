@@ -262,7 +262,7 @@ Returns the most recent closed or canceled orders up to circa two weeks ago
 
 ### HTTP REQUEST
 
-`POST /v1/auth/r/orders/tBTCUSD/hist`
+`POST /v1/auth/r/orders/<Symbol>/hist`
 
 ### ARGUMENTS
 
