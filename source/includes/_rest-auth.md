@@ -39,7 +39,7 @@ See your balances
     UserId, 
     // WALLET_TYPE,
     Asset,  // CURRENCY,
-    //BALANCE,
+    // BALANCE,
     OpId,
     OpType,
     OpTime
