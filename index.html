@@ -673,7 +673,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
     </span><span class="err">OpType</span><span class="p">,</span><span class="w">
     </span><span class="err">OpTime</span><span class="w">
     </span><span class="err">Change</span><span class="p">,</span><span class="w">
-    </span><span class="err">FreezeBalance</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">UNSETTLED_INTEREST</span><span class="p">,</span><span class="w">
+    </span><span class="err">FreezeBalance</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">UNSETTLED_INTEREST</span><span class="p">,</span><span class="w">
     </span><span class="err">AvailableBalance</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">BALANCE_AVAILABLE</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
@@ -728,15 +728,15 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
   </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
   </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-  </span><span class="err">Price</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Amount</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-  </span><span class="err">//PRICE_AVG</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
   </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
   </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
   </span><span class="err">Left</span><span class="p">,</span><span class="w">
@@ -801,15 +801,15 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
   </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
   </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-  </span><span class="err">Price</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Amount</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-  </span><span class="err">//PRICE_AVG</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
   </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
   </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
   </span><span class="err">Left</span><span class="p">,</span><span class="w">
@@ -850,15 +850,15 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
   </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
   </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-  </span><span class="err">Price</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Amount</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-  </span><span class="err">//PRICE_AVG</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
   </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
   </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
   </span><span class="err">Left</span><span class="p">,</span><span class="w">
@@ -900,15 +900,15 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
   </span><span class="p">[</span><span class="w">
     </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
     </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-    </span><span class="err">CreateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-    </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
     </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-    </span><span class="err">Market</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-    </span><span class="err">Price</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-    </span><span class="err">Amount</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+    </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-    </span><span class="err">//PRICE_AVG</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
     </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
     </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
     </span><span class="err">Left</span><span class="p">,</span><span class="w">
@@ -952,15 +952,15 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
   </span><span class="p">[</span><span class="w">
     </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
     </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-    </span><span class="err">CreateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-    </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+    </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
     </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-    </span><span class="err">Market</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-    </span><span class="err">Price</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-    </span><span class="err">Amount</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+    </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+    </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-    </span><span class="err">//PRICE_AVG</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
     </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
     </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
     </span><span class="err">Left</span><span class="p">,</span><span class="w">
