@@ -36,11 +36,16 @@ See your balances
 ```json
 [
   [
-    WALLET_TYPE,
-    CURRENCY,
-    BALANCE,
-    UNSETTLED_INTEREST,
-    BALANCE_AVAILABLE
+    UserId, 
+    // WALLET_TYPE,
+    Asset,  // CURRENCY,
+    //BALANCE,
+    OpId,
+    OpType,
+    OpTime
+    Change,
+    FreezeBalance, // UNSETTLED_INTEREST,
+    AvailableBalance  // BALANCE_AVAILABLE
   ],
   ...
 ]
@@ -87,16 +92,24 @@ curl https://durex/v1/order/new
 
 ```json
 [
-  ID,
-  SYMBOL,
-  MTS_CREATE,
-  MTS_UPDATE,
-  AMOUNT,
-  AMOUNT_ORIG,
-  TYPE,
-  ORDER_STATUS,
-  PRICE,
-  PRICE_AVG
+  OrderId,  // ID,
+  OrderType,  // TYPE,
+  CreateTime, // MTS_CREATE,
+  UpdateTime, // MTS_UPDATE,
+  UserId,
+  Market, // SYMBOL,
+  Price, // PRICE,
+  Amount, // AMOUNT,
+  // AMOUNT_ORIG,
+  // ORDER_STATUS,
+  //PRICE_AVG
+  TakerFee,
+  MakerFee,
+  Left,
+  Freeze,
+  DealStock,
+  DealMoney,
+  DealFee
 ]
 ```
 
@@ -128,16 +141,24 @@ curl https://durex/v1/order/cancel
 
 ```json
 [
-  ID,
-  SYMBOL,
-  MTS_CREATE,
-  MTS_UPDATE,
-  AMOUNT,
-  AMOUNT_ORIG,
-  TYPE,
-  ORDER_STATUS,
-  PRICE,
-  PRICE_AVG
+  OrderId,  // ID,
+  OrderType,  // TYPE,
+  CreateTime, // MTS_CREATE,
+  UpdateTime, // MTS_UPDATE,
+  UserId,
+  Market, // SYMBOL,
+  Price, // PRICE,
+  Amount, // AMOUNT,
+  // AMOUNT_ORIG,
+  // ORDER_STATUS,
+  //PRICE_AVG
+  TakerFee,
+  MakerFee,
+  Left,
+  Freeze,
+  DealStock,
+  DealMoney,
+  DealFee
 ]
 ```
 
@@ -165,16 +186,24 @@ curl https://durex/v1/order/status
 
 ```json
 [
-  ID,
-  SYMBOL,
-  MTS_CREATE,
-  MTS_UPDATE,
-  AMOUNT,
-  AMOUNT_ORIG,
-  TYPE,
-  ORDER_STATUS,
-  PRICE,
-  PRICE_AVG
+  OrderId,  // ID,
+  OrderType,  // TYPE,
+  CreateTime, // MTS_CREATE,
+  UpdateTime, // MTS_UPDATE,
+  UserId,
+  Market, // SYMBOL,
+  Price, // PRICE,
+  Amount, // AMOUNT,
+  // AMOUNT_ORIG,
+  // ORDER_STATUS,
+  //PRICE_AVG
+  TakerFee,
+  MakerFee,
+  Left,
+  Freeze,
+  DealStock,
+  DealMoney,
+  DealFee
 ]
 ```
 
@@ -203,16 +232,24 @@ curl https://durex/v1/auth/r/orders/tBTCUSD
 ```json
 [
   [
-    ID,
-    SYMBOL,
-    MTS_CREATE,
-    MTS_UPDATE,
-    AMOUNT,
-    AMOUNT_ORIG,
-    TYPE,
-    ORDER_STATUS,
-    PRICE,
-    PRICE_AVG
+    OrderId,  // ID,
+    OrderType,  // TYPE,
+    CreateTime, // MTS_CREATE,
+    UpdateTime, // MTS_UPDATE,
+    UserId,
+    Market, // SYMBOL,
+    Price, // PRICE,
+    Amount, // AMOUNT,
+    // AMOUNT_ORIG,
+    // ORDER_STATUS,
+    //PRICE_AVG
+    TakerFee,
+    MakerFee,
+    Left,
+    Freeze,
+    DealStock,
+    DealMoney,
+    DealFee
   ],
   ...
 ]
@@ -243,16 +280,24 @@ curl https://durex/v1/auth/r/orders/tBTCUSD/hist
 ```json
 [
   [
-    ID,
-    SYMBOL,
-    MTS_CREATE,
-    MTS_UPDATE,
-    AMOUNT,
-    AMOUNT_ORIG,
-    TYPE,
-    ORDER_STATUS,
-    PRICE,
-    PRICE_AVG
+    OrderId,  // ID,
+    OrderType,  // TYPE,
+    CreateTime, // MTS_CREATE,
+    UpdateTime, // MTS_UPDATE,
+    UserId,
+    Market, // SYMBOL,
+    Price, // PRICE,
+    Amount, // AMOUNT,
+    // AMOUNT_ORIG,
+    // ORDER_STATUS,
+    //PRICE_AVG
+    TakerFee,
+    MakerFee,
+    Left,
+    Freeze,
+    DealStock,
+    DealMoney,
+    DealFee
   ],
   ...
 ]

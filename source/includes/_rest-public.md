@@ -13,10 +13,14 @@ curl https://durex/v1/symbols
 ```json
 [
   [
-    SYMBOL,
-    PRICE_PRECISION,
-    MINIMUM_ORDER_SIZE,
-    MAXIMUM_ORDER_SIZE
+    Name,  // SYMBOL,
+    Stock,
+    Money,
+    StockPrec,  // PRICE_PRECISION,
+    MoneyPrec,
+    FeePrec,
+    MinAmount  // MINIMUM_ORDER_SIZE,
+    // MAXIMUM_ORDER_SIZE
   ],
   ...
 ]
@@ -184,9 +188,9 @@ curl https://durex/v1/book/tBTCUSD/P0
 // on trading pairs (ex. tBTCUSD)
 [
   [
-    PRICE,
-    COUNT,
-    AMOUNT
+    Price,  // PRICE,
+    // COUNT,
+    Amount  // AMOUNT
   ]
 ]
 ```
