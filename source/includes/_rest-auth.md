@@ -44,7 +44,7 @@ See your balances
     OpType,
     OpTime
     Change,
-    FreezeBalance, // UNSETTLED_INTEREST,
+    FreezeBalance,  // UNSETTLED_INTEREST,
     AvailableBalance  // BALANCE_AVAILABLE
   ],
   ...
@@ -94,15 +94,15 @@ curl https://durex/v1/order/new
 [
   OrderId,  // ID,
   OrderType,  // TYPE,
-  CreateTime, // MTS_CREATE,
-  UpdateTime, // MTS_UPDATE,
+  CreateTime,  // MTS_CREATE,
+  UpdateTime,  // MTS_UPDATE,
   UserId,
-  Market, // SYMBOL,
-  Price, // PRICE,
-  Amount, // AMOUNT,
+  Market,  // SYMBOL,
+  Price,  // PRICE,
+  Amount,  // AMOUNT,
   // AMOUNT_ORIG,
   // ORDER_STATUS,
-  //PRICE_AVG
+  // PRICE_AVG
   TakerFee,
   MakerFee,
   Left,
@@ -143,15 +143,15 @@ curl https://durex/v1/order/cancel
 [
   OrderId,  // ID,
   OrderType,  // TYPE,
-  CreateTime, // MTS_CREATE,
-  UpdateTime, // MTS_UPDATE,
+  CreateTime,  // MTS_CREATE,
+  UpdateTime,  // MTS_UPDATE,
   UserId,
-  Market, // SYMBOL,
-  Price, // PRICE,
-  Amount, // AMOUNT,
+  Market,  // SYMBOL,
+  Price,  // PRICE,
+  Amount,  // AMOUNT,
   // AMOUNT_ORIG,
   // ORDER_STATUS,
-  //PRICE_AVG
+  // PRICE_AVG
   TakerFee,
   MakerFee,
   Left,
@@ -188,15 +188,15 @@ curl https://durex/v1/order/status
 [
   OrderId,  // ID,
   OrderType,  // TYPE,
-  CreateTime, // MTS_CREATE,
-  UpdateTime, // MTS_UPDATE,
+  CreateTime,  // MTS_CREATE,
+  UpdateTime,  // MTS_UPDATE,
   UserId,
-  Market, // SYMBOL,
-  Price, // PRICE,
-  Amount, // AMOUNT,
+  Market,  // SYMBOL,
+  Price,  // PRICE,
+  Amount,  // AMOUNT,
   // AMOUNT_ORIG,
   // ORDER_STATUS,
-  //PRICE_AVG
+  // PRICE_AVG
   TakerFee,
   MakerFee,
   Left,
@@ -234,15 +234,15 @@ curl https://durex/v1/auth/r/orders/tBTCUSD
   [
     OrderId,  // ID,
     OrderType,  // TYPE,
-    CreateTime, // MTS_CREATE,
-    UpdateTime, // MTS_UPDATE,
+    CreateTime,  // MTS_CREATE,
+    UpdateTime,  // MTS_UPDATE,
     UserId,
-    Market, // SYMBOL,
-    Price, // PRICE,
-    Amount, // AMOUNT,
+    Market,  // SYMBOL,
+    Price,  // PRICE,
+    Amount,  // AMOUNT,
     // AMOUNT_ORIG,
     // ORDER_STATUS,
-    //PRICE_AVG
+    // PRICE_AVG
     TakerFee,
     MakerFee,
     Left,
@@ -282,15 +282,15 @@ curl https://durex/v1/auth/r/orders/tBTCUSD/hist
   [
     OrderId,  // ID,
     OrderType,  // TYPE,
-    CreateTime, // MTS_CREATE,
-    UpdateTime, // MTS_UPDATE,
+    CreateTime,  // MTS_CREATE,
+    UpdateTime,  // MTS_UPDATE,
     UserId,
-    Market, // SYMBOL,
-    Price, // PRICE,
-    Amount, // AMOUNT,
+    Market,  // SYMBOL,
+    Price,  // PRICE,
+    Amount,  // AMOUNT,
     // AMOUNT_ORIG,
     // ORDER_STATUS,
-    //PRICE_AVG
+    // PRICE_AVG
     TakerFee,
     MakerFee,
     Left,
