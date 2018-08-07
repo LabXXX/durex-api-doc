@@ -672,7 +672,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/balances
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/balances?user_id=a"
 </code></pre>
 <p>See your balances</p>
 <h3 id='http-request-2'>HTTP REQUEST</h3>
@@ -694,13 +694,23 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
     </span><span class="err">FreezeBalance</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">UNSETTLED_INTEREST</span><span class="p">,</span><span class="w">
     </span><span class="err">AvailableBalance</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">BALANCE_AVAILABLE</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="mi">1533593957</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"1.3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"2.7"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h2 id='withdrawal'>Withdrawal</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/withdraw
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/balances/USD/deposit?user_id=b&amp;amount=1000"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -711,7 +721,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 </span></code></pre>
 <p>Allow you to request a withdrawal from one of your wallet.</p>
 <h3 id='http-request-3'>HTTP REQUEST</h3>
-<p><code>POST /v1/auth/w/withdraw</code></p>
+<p><code>POST /v1/auth/w/balances/&lt;Asset&gt;/withdraw</code></p>
 <h3 id='arguments'>ARGUMENTS</h3>
 <table><thead>
 <tr>
@@ -722,46 +732,31 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 </tr>
 </thead><tbody>
 <tr>
+<td>Asset</td>
+<td>string</td>
+<td>Required</td>
+<td>Currency (USD, etc)</td>
+</tr>
+<tr>
 <td>amount</td>
 <td>string</td>
 <td>Required</td>
 <td>Amount to withdraw.</td>
-</tr>
-<tr>
-<td>address</td>
-<td>string</td>
-<td>Required</td>
-<td>Destination address for withdrawal.</td>
 </tr>
 </tbody></table>
 <h2 id='new-order'>New Order</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/order/new
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=limit&amp;symbol=BTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
+
+curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
-  </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-  </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
-  </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
-  </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
-  </span><span class="err">Left</span><span class="p">,</span><span class="w">
-  </span><span class="err">Freeze</span><span class="p">,</span><span class="w">
-  </span><span class="err">DealStock</span><span class="p">,</span><span class="w">
-  </span><span class="err">DealMoney</span><span class="p">,</span><span class="w">
-  </span><span class="err">DealFee</span><span class="w">
+  </span><span class="err">OrderId</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Submit a new Order</p>
@@ -777,22 +772,16 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 </tr>
 </thead><tbody>
 <tr>
+<td>type</td>
+<td>string</td>
+<td>Required</td>
+<td>Either “market” / “limit”</td>
+</tr>
+<tr>
 <td>symbol</td>
 <td>string</td>
 <td>Required</td>
 <td>The name of the symbol (see /symbols).</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>Required</td>
-<td>Order size: how much you want to buy or sell</td>
-</tr>
-<tr>
-<td>price</td>
-<td>float</td>
-<td>Required</td>
-<td>Price to buy or sell at. Must be positive. Use random number for market orders.</td>
 </tr>
 <tr>
 <td>side</td>
@@ -801,10 +790,28 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <td>Either “buy” or “sell”.</td>
 </tr>
 <tr>
-<td>type</td>
-<td>string</td>
+<td>price</td>
+<td>float</td>
 <td>Required</td>
-<td>Either “market” / “limit”</td>
+<td>Price to buy or sell at. Must be positive. No need for market orders.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>Required</td>
+<td>Order size: how much you want to buy or sell</td>
+</tr>
+<tr>
+<td>taker_fee</td>
+<td>float</td>
+<td>Required</td>
+<td>Taker fee rate (0 &lt;= taker_fee &lt;= 1)</td>
+</tr>
+<tr>
+<td>maker_fee</td>
+<td>float</td>
+<td>Required</td>
+<td>Maker fee rate (0 &lt;= taker_fee &lt;= 1)</td>
 </tr>
 </tbody></table>
 <h2 id='cancel-order'>Cancel Order</h2>
@@ -835,6 +842,25 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
   </span><span class="err">DealStock</span><span class="p">,</span><span class="w">
   </span><span class="err">DealMoney</span><span class="p">,</span><span class="w">
   </span><span class="err">DealFee</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="w">
+  </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
+  </span><span class="mi">1533594155</span><span class="p">,</span><span class="w">
+  </span><span class="mi">1533594155</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="w"> 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Cancel an order.</p>
