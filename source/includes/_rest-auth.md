@@ -22,7 +22,7 @@ curl
 > Example request
 
 ```curl
-curl https://durex/v1/balances
+curl -X POST "https://durex/v1/balances?user_id=a"
 ```
 
 See your balances
@@ -47,6 +47,16 @@ See your balances
     FreezeBalance,  // UNSETTLED_INTEREST,
     AvailableBalance  // BALANCE_AVAILABLE
   ],
+  [
+    "a",
+    "BTC",
+    0,
+    "deposit",
+    1533593957,
+    "1.3",
+    "0",
+    "2.7"
+  ],
   ...
 ]
 ```
@@ -56,7 +66,7 @@ See your balances
 > Example request
 
 ```curl
-curl https://durex/v1/withdraw
+curl -X POST "https://durex/v1/auth/w/balances/USD/deposit?user_id=b&amount=1000"
 ```
 
 > Example Response
@@ -71,45 +81,30 @@ Allow you to request a withdrawal from one of your wallet.
 
 ### HTTP REQUEST
 
-`POST /v1/auth/w/withdraw`
+`POST /v1/auth/w/balances/<Asset>/withdraw`
 
 ### ARGUMENTS
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
+ Asset | string | Required | Currency (USD, etc)
  amount | string | Required | Amount to withdraw.
- address | string | Required | Destination address for withdrawal.
 
 ## New Order
 
 > Example request
 
 ```curl
-curl https://durex/v1/order/new
+curl -X POST "https://durex/v1/auth/w/order/new?type=limit&symbol=BTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
+
+curl -X POST "https://durex/v1/auth/w/order/new?type=market&symbol=BTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
 ```
 
 > Example Response
 
 ```json
 [
-  OrderId,  // ID,
-  OrderType,  // TYPE,
-  CreateTime,  // MTS_CREATE,
-  UpdateTime,  // MTS_UPDATE,
-  UserId,
-  Market,  // SYMBOL,
-  Price,  // PRICE,
-  Amount,  // AMOUNT,
-  // AMOUNT_ORIG,
-  // ORDER_STATUS,
-  // PRICE_AVG
-  TakerFee,
-  MakerFee,
-  Left,
-  Freeze,
-  DealStock,
-  DealMoney,
-  DealFee
+  OrderId  // ID
 ]
 ```
 
@@ -123,11 +118,13 @@ Submit a new Order
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
- symbol | string | Required | The name of the symbol (see /symbols).
- amount | float | Required | Order size: how much you want to buy or sell
- price | float | Required | Price to buy or sell at. Must be positive. Use random number for market orders.
- side | string | Required | Either “buy” or “sell”.
  type | string | Required | Either “market” / “limit”
+ symbol | string | Required | The name of the symbol (see /symbols).
+ side | string | Required | Either “buy” or “sell”.
+ price | float | Required | Price to buy or sell at. Must be positive. No need for market orders.
+ amount | float | Required | Order size: how much you want to buy or sell
+ taker_fee | float | Required | Taker fee rate (0 <= taker_fee <= 1)
+ maker_fee | float | Required | Maker fee rate (0 <= taker_fee <= 1)
 
 ## Cancel Order
 
@@ -159,6 +156,25 @@ curl https://durex/v1/order/cancel
   DealStock,
   DealMoney,
   DealFee
+]
+
+[
+  3,
+  "BTCUSD",
+  1,
+  2,
+  "a",
+  1533594155,
+  1533594155,
+  "10",
+  "10",
+  "0",
+  "0",
+  "10",
+  "10",
+  "0",
+  "0",
+  "0" 
 ]
 ```
 
