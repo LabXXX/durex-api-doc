@@ -30,7 +30,7 @@ curl -X GET "https://durex/v1/symbols"
     8,
     8,
     "0.01"
-  ]
+  ],
   ...
 ]
 ```

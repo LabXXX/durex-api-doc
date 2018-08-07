@@ -120,7 +120,7 @@ Submit a new Order
 ---------- | ---- | -------- | ------------
  type | string | Required | Either “market” / “limit”
  symbol | string | Required | The name of the symbol (see /symbols).
- side | string | Required | Either “buy” or “sell”.
+ side | int | Required | Either 1 (sell) or 2(buy).
  price | float | Required | Price to buy or sell at. Must be positive. No need for market orders.
  amount | float | Required | Order size: how much you want to buy or sell
  taker_fee | float | Required | Taker fee rate (0 <= taker_fee <= 1)
