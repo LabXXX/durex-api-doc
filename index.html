@@ -710,7 +710,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/balances/USD/deposit?user_id=b&amp;amount=1000"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amp;amount=1000"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -748,9 +748,9 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=limit&amp;symbol=BTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=limit&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
 
-curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -818,18 +818,19 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/order/cancel
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&amp;user_id=a&amp;order_id=3"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
   </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Side</span><span class="p">,</span><span class="w">
+  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
   </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
   </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
   </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
   </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
@@ -846,7 +847,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 
 </span><span class="p">[</span><span class="w">
   </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="w">
   </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
@@ -876,6 +877,12 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 </tr>
 </thead><tbody>
 <tr>
+<td>symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>Symbol (tBTCUSD, ...)</td>
+</tr>
+<tr>
 <td>order_id</td>
 <td>int64</td>
 <td>Required</td>
@@ -886,18 +893,19 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/order/status
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/order/status?symbol=tBTCUSD&amp;user_id=a&amp;order_id=3"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
   </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Side</span><span class="p">,</span><span class="w">
+  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
   </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
   </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
   </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
   </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
@@ -910,6 +918,25 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
   </span><span class="err">DealStock</span><span class="p">,</span><span class="w">
   </span><span class="err">DealMoney</span><span class="p">,</span><span class="w">
   </span><span class="err">DealFee</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="w">
+  </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
+  </span><span class="mi">1533594155</span><span class="p">,</span><span class="w">
+  </span><span class="mi">1533594155</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"0"</span><span class="w"> 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.</p>
@@ -925,6 +952,12 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 </tr>
 </thead><tbody>
 <tr>
+<td>symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>Symbol (tBTCUSD, ...)</td>
+</tr>
+<tr>
 <td>order_id</td>
 <td>int64</td>
 <td>Required</td>
@@ -935,7 +968,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/auth/r/orders/tBTCUSD
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD&amp;user_id=a"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -943,11 +976,12 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">[</span><span class="w">
     </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
     </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+    </span><span class="err">Side</span><span class="p">,</span><span class="w">
+    </span><span class="err">UserId</span><span class="p">,</span><span class="w">
     </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
     </span><span class="err">UpdateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
-    </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-    </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
     </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
     </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
@@ -960,6 +994,24 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=BTCUSD&am
     </span><span class="err">DealStock</span><span class="p">,</span><span class="w">
     </span><span class="err">DealMoney</span><span class="p">,</span><span class="w">
     </span><span class="err">DealFee</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="w">
+    </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
+    </span><span class="mi">1533594155</span><span class="p">,</span><span class="w">
+    </span><span class="mi">1533594155</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
