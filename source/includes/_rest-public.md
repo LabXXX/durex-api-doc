@@ -5,7 +5,7 @@
 > Example request
 
 ```curl
-curl https://durex/v1/symbols
+curl -X GET "https://durex/v1/symbols"
 ```
 
 > Example Response
@@ -22,6 +22,15 @@ curl https://durex/v1/symbols
     MinAmount  // MINIMUM_ORDER_SIZE,
     // MAXIMUM_ORDER_SIZE
   ],
+  [
+    "tBTCUSD",
+    "BTC",
+    "USD",
+    8,
+    8,
+    8,
+    "0.01"
+  ]
   ...
 ]
 ```
@@ -179,7 +188,7 @@ Trades endpoint includes all the pertinent details of the trade, such as price, 
 > Example request
 
 ```curl
-curl https://durex/v1/book/tBTCUSD/P0
+curl -X GET "https://durex/v1/book/tBTCUSD/0?limit=3"
 ```
 
 > Example Response
@@ -187,10 +196,19 @@ curl https://durex/v1/book/tBTCUSD/P0
 ```json
 // on trading pairs (ex. tBTCUSD)
 [
-  [
-    Price,  // PRICE,
-    // COUNT,
-    Amount  // AMOUNT
+  [  // asks
+    [
+      Price,  // PRICE,
+      // COUNT,
+      Amount  // AMOUNT
+    ],
+    ["7000","10.5"],
+    ["6999","10"]
+  ],
+  [  // bids
+    ["6996.5","11"],
+    ["6970","12"],
+    ["6952.666","3"]
   ]
 ]
 ```
@@ -207,8 +225,8 @@ It is provided on a price aggregated basis, with customizable precision.
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | The symbol you want information about. You can find the list of valid symbols by calling the /symbols endpoint.
- Precision | string | Required | Level of price aggregation (P0, P1, P2, P3, R0)
- len | int32 | Optional |Number of price points ("25", "100")
+ Precision | string | Required | Level of price aggregation (0, 0.1, 0.01, 0.001, 0.0001, 0.00001, ...)
+ limit | uint | Optional | Number of price points (0: all)
 
 ## Candles
 
