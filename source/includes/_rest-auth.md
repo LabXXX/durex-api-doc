@@ -66,7 +66,7 @@ See your balances
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/w/balances/USD/deposit?user_id=b&amount=1000"
+curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amount=1000"
 ```
 
 > Example Response
@@ -95,9 +95,9 @@ Allow you to request a withdrawal from one of your wallet.
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/w/order/new?type=limit&symbol=BTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=limit&symbol=tBTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
 
-curl -X POST "https://durex/v1/auth/w/order/new?type=market&symbol=BTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=market&symbol=tBTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
 ```
 
 > Example Response
@@ -131,7 +131,7 @@ Submit a new Order
 > Example request
 
 ```curl
-curl https://durex/v1/order/cancel
+curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&user_id=a&order_id=3"
 ```
 
 > Example Response
@@ -139,11 +139,12 @@ curl https://durex/v1/order/cancel
 ```json
 [
   OrderId,  // ID,
+  Market,  // SYMBOL,
   OrderType,  // TYPE,
+  Side,
+  UserId,
   CreateTime,  // MTS_CREATE,
   UpdateTime,  // MTS_UPDATE,
-  UserId,
-  Market,  // SYMBOL,
   Price,  // PRICE,
   Amount,  // AMOUNT,
   // AMOUNT_ORIG,
@@ -160,7 +161,7 @@ curl https://durex/v1/order/cancel
 
 [
   3,
-  "BTCUSD",
+  "tBTCUSD",
   1,
   2,
   "a",
@@ -188,6 +189,7 @@ Cancel an order.
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
+ symbol | string | Required | Symbol (tBTCUSD, ...)
  order_id | int64 | Required | The order ID given by /order/new.
 
 ## Order Status
@@ -195,7 +197,7 @@ Cancel an order.
 > Example request
 
 ```curl
-curl https://durex/v1/order/status
+curl -X POST "https://durex/v1/order/status?symbol=tBTCUSD&user_id=a&order_id=3"
 ```
 
 > Example Response
@@ -203,11 +205,12 @@ curl https://durex/v1/order/status
 ```json
 [
   OrderId,  // ID,
+  Market,  // SYMBOL,
   OrderType,  // TYPE,
+  Side,
+  UserId,
   CreateTime,  // MTS_CREATE,
   UpdateTime,  // MTS_UPDATE,
-  UserId,
-  Market,  // SYMBOL,
   Price,  // PRICE,
   Amount,  // AMOUNT,
   // AMOUNT_ORIG,
@@ -221,6 +224,25 @@ curl https://durex/v1/order/status
   DealMoney,
   DealFee
 ]
+
+[
+  3,
+  "tBTCUSD",
+  1,
+  2,
+  "a",
+  1533594155,
+  1533594155,
+  "10",
+  "10",
+  "0",
+  "0",
+  "10",
+  "10",
+  "0",
+  "0",
+  "0" 
+]
 ```
 
 Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.
@@ -233,6 +255,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
+ symbol | string | Required | Symbol (tBTCUSD, ...)
  order_id | int64 | Required | The order ID given by /order/new.
 
 ## Active Orders
@@ -240,7 +263,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 > Example request
 
 ```curl
-curl https://durex/v1/auth/r/orders/tBTCUSD
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD&user_id=a"
 ```
 
 > Example Response
@@ -249,11 +272,12 @@ curl https://durex/v1/auth/r/orders/tBTCUSD
 [
   [
     OrderId,  // ID,
+    Market,  // SYMBOL,
     OrderType,  // TYPE,
+    Side,
+    UserId,
     CreateTime,  // MTS_CREATE,
     UpdateTime,  // MTS_UPDATE,
-    UserId,
-    Market,  // SYMBOL,
     Price,  // PRICE,
     Amount,  // AMOUNT,
     // AMOUNT_ORIG,
@@ -266,6 +290,24 @@ curl https://durex/v1/auth/r/orders/tBTCUSD
     DealStock,
     DealMoney,
     DealFee
+  ],
+  [
+    3,
+    "tBTCUSD",
+    1,
+    2,
+    "a",
+    1533594155,
+    1533594155,
+    "10",
+    "10",
+    "0",
+    "0",
+    "10",
+    "10",
+    "0",
+    "0",
+    "0"
   ],
   ...
 ]
