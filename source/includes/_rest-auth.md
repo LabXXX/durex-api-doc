@@ -22,7 +22,7 @@ curl
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/balances?user_id=a"
+curl -X POST "https://durex/v1/auth/r/balances?user_id=a"
 ```
 
 See your balances
@@ -263,7 +263,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD&user_id=a"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=a"
 ```
 
 > Example Response
