@@ -95,9 +95,9 @@ Allow you to request a withdrawal from one of your wallet.
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/w/order/new?type=limit&symbol=tBTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=1&symbol=tBTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
 
-curl -X POST "https://durex/v1/auth/w/order/new?type=market&symbol=tBTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=2&symbol=tBTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
 ```
 
 > Example Response
@@ -118,7 +118,7 @@ Submit a new Order
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
- type | string | Required | Either “market” / “limit”
+ type | string | Required | Either 1(market / 2(limit)
  symbol | string | Required | The name of the symbol (see /symbols).
  side | int | Required | Either 1 (sell) or 2(buy).
  price | float | Required | Price to buy or sell at. Must be positive. No need for market orders.
