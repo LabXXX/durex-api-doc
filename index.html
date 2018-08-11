@@ -672,7 +672,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/balances?user_id=a"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances?user_id=a"
 </code></pre>
 <p>See your balances</p>
 <h3 id='http-request-2'>HTTP REQUEST</h3>
@@ -748,9 +748,9 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=limit&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=1&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
 
-curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -775,7 +775,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=tBTCUSD&a
 <td>type</td>
 <td>string</td>
 <td>Required</td>
-<td>Either “market” / “limit”</td>
+<td>Either 1(market / 2(limit)</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -968,7 +968,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=market&amp;symbol=tBTCUSD&a
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD&amp;user_id=a"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=a"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
