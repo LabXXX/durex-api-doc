@@ -44,7 +44,11 @@ curl https://durex/v1/platform/status
 > Example Response
 
 ```json
-[OPERATIVE]
+[
+  Operative // OPERATIVE
+]
+
+[1]
 ```
 
 Get the current status of the platform.
@@ -274,15 +278,17 @@ Provides a way to access charting candle info
 > Example request
 
 ```curl
-curl https://durex/v1/time
+curl -X GET "https://durex/v1/time"
 ```
 
 > Example Response
 
 ```json
 [
-  1435082571
+  CurrentTime
 ]
+
+[1435082571]
 ```
 
 Get the API server time
