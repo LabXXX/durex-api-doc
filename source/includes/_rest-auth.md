@@ -47,16 +47,8 @@ See your balances
     FreezeBalance,  // UNSETTLED_INTEREST,
     AvailableBalance  // BALANCE_AVAILABLE
   ],
-  [
-    "a",
-    "BTC",
-    0,
-    "deposit",
-    1533593957,
-    "1.3",
-    "0",
-    "2.7"
-  ],
+  ["a","BTC",9,"bidMakerFreezeStock",1534228785,"-5.00000000","1.00000000","978.00000000"],
+  ["a","USD",9,"bidMakerMoney",1534228785,"175.00000000","0","400.00000000"],
   ...
 ]
 ```
@@ -172,7 +164,7 @@ Cancel an order.
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/order/status?symbol=tBTCUSD&user_id=a&order_id=3"
+curl -X POST "https://durex/v1/auth/r/order/status?symbol=tBTCUSD&user_id=b&order_id=9"
 ```
 
 > Example Response
@@ -200,24 +192,7 @@ curl -X POST "https://durex/v1/order/status?symbol=tBTCUSD&user_id=a&order_id=3"
   DealFee
 ]
 
-[
-  3,
-  "tBTCUSD",
-  1,
-  2,
-  "a",
-  1533594155,
-  1533594155,
-  "10",
-  "10",
-  "0",
-  "0",
-  "10",
-  "10",
-  "0",
-  "0",
-  "0" 
-]
+[9,"tBTCUSD",1,2,"b",1534228785,1534228785,"55.00000000","8.00000000","0.00000000","0.00000000","3.00000000","165.00000000","5.00000000","175.00000000","0.00000000"]
 ```
 
 Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.
@@ -266,24 +241,7 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=a"
     DealMoney,
     DealFee
   ],
-  [
-    3,
-    "tBTCUSD",
-    1,
-    2,
-    "a",
-    1533594155,
-    1533594155,
-    "10",
-    "10",
-    "0",
-    "0",
-    "10",
-    "10",
-    "0",
-    "0",
-    "0"
-  ],
+  [9,"tBTCUSD",1,2,"b",1534228785,1534228785,"55.00000000","8.00000000","0.00000000","0.00000000","3.00000000","165.00000000","5.00000000","175.00000000","0.00000000"],
   ...
 ]
 ```
