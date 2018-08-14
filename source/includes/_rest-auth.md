@@ -48,7 +48,7 @@ See your balances
     AvailableBalance  // BALANCE_AVAILABLE
   ],
   ["a","BTC",9,"bidMakerFreezeStock",1534228785,"-5.00000000","1.00000000","978.00000000"],
-  ["a","USD",9,"bidMakerMoney",1534228785,"175.00000000","0","400.00000000"],
+  ["a","USD",9,"bidMakerMoney",1534228785,"175.00000000","0.00000000","400.00000000"],
   ...
 ]
 ```
@@ -68,9 +68,7 @@ curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amount=100
   OpId  //WITHDRAWAL_ID
 ]
 
-[
-  3
-]
+[2]
 ```
 
 Allow you to request a withdrawal from one of your wallet.
@@ -103,9 +101,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&symbol=tBTCUSD&user_id=a&
   OrderId  // ID
 ]
 
-[
-  3
-]
+[3]
 ```
 
 Submit a new Order
@@ -141,9 +137,7 @@ curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&user_id=a&order_id=3"
   OpId
 ]
 
-[
-  4
-]
+[4]
 ```
 
 Cancel an order.
