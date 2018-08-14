@@ -73,7 +73,11 @@ curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amount=100
 
 ```json
 [
-  WITHDRAWAL_ID
+  OpId  //WITHDRAWAL_ID
+]
+
+[
+  3
 ]
 ```
 
@@ -105,6 +109,10 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&symbol=tBTCUSD&user_id=a&
 ```json
 [
   OrderId  // ID
+]
+
+[
+  3
 ]
 ```
 
@@ -138,44 +146,11 @@ curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&user_id=a&order_id=3"
 
 ```json
 [
-  OrderId,  // ID,
-  Market,  // SYMBOL,
-  OrderType,  // TYPE,
-  Side,
-  UserId,
-  CreateTime,  // MTS_CREATE,
-  UpdateTime,  // MTS_UPDATE,
-  Price,  // PRICE,
-  Amount,  // AMOUNT,
-  // AMOUNT_ORIG,
-  // ORDER_STATUS,
-  // PRICE_AVG
-  TakerFee,
-  MakerFee,
-  Left,
-  Freeze,
-  DealStock,
-  DealMoney,
-  DealFee
+  OpId
 ]
 
 [
-  3,
-  "tBTCUSD",
-  1,
-  2,
-  "a",
-  1533594155,
-  1533594155,
-  "10",
-  "10",
-  "0",
-  "0",
-  "10",
-  "10",
-  "0",
-  "0",
-  "0" 
+  4
 ]
 ```
 
