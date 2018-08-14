@@ -231,9 +231,6 @@
                     <a href="#platform-status" class="toc-h2 toc-link" data-title="platform-status">Platform Status</a>
                   </li>
                   <li>
-                    <a href="#tickers" class="toc-h2 toc-link" data-title="tickers">Tickers</a>
-                  </li>
-                  <li>
                     <a href="#ticker" class="toc-h2 toc-link" data-title="ticker">Ticker</a>
                   </li>
                   <li>
@@ -355,52 +352,6 @@ Even if rare it is important to have a way to notify users.</p>
 <p>For a real-time notification we suggest to use websockets and listen to events 20060/20061</p>
 <h3 id='http-request-2'>HTTP REQUEST</h3>
 <p><code>GET /v1/platform/status</code></p>
-<h2 id='tickers'>Tickers</h2>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/tickers?symbols=tBTCUSD,tLTCUSD
-</code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-    </span><span class="err">BID</span><span class="p">,</span><span class="w">
-    </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
-    </span><span class="err">ASK</span><span class="p">,</span><span class="w">
-    </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
-    </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
-    </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
-    </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
-    </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
-    </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
-    </span><span class="err">LOW</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-  </span><span class="err">...</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.</p>
-<h3 id='http-request-3'>HTTP REQUEST</h3>
-<p><code>GET /v1/tickers</code></p>
-<h3 id='arguments'>ARGUMENTS</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbols</td>
-<td>string</td>
-<td>Required</td>
-<td>The symbols you want information about. ex: tBTCUSD</td>
-</tr>
-</tbody></table>
 <h2 id='ticker'>Ticker</h2>
 <blockquote>
 <p>Example request</p>
@@ -425,9 +376,9 @@ Even if rare it is important to have a way to notify users.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.</p>
-<h3 id='http-request-4'>HTTP REQUEST</h3>
+<h3 id='http-request-3'>HTTP REQUEST</h3>
 <p><code>GET /v1/ticker/&lt;Symbol&gt;</code></p>
-<h3 id='arguments-2'>ARGUMENTS</h3>
+<h3 id='arguments'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -463,9 +414,9 @@ Even if rare it is important to have a way to notify users.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Trades endpoint includes all the pertinent details of the trade, such as price, size and time.</p>
-<h3 id='http-request-5'>HTTP REQUEST</h3>
+<h3 id='http-request-4'>HTTP REQUEST</h3>
 <p><code>GET /v1/trades/&lt;Symbol&gt;/hist</code></p>
-<h3 id='arguments-3'>ARGUMENTS</h3>
+<h3 id='arguments-2'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -530,9 +481,9 @@ Even if rare it is important to have a way to notify users.</p>
 </span></code></pre>
 <p>The Order Books channel allow you to keep track of the state of the Bitfinex order book.
 It is provided on a price aggregated basis, with customizable precision.</p>
-<h3 id='http-request-6'>HTTP REQUEST</h3>
+<h3 id='http-request-5'>HTTP REQUEST</h3>
 <p><code>GET /v1/book/&lt;Symbol&gt;/&lt;Precision&gt;</code></p>
-<h3 id='arguments-4'>ARGUMENTS</h3>
+<h3 id='arguments-3'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -590,7 +541,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <p>Provides a way to access charting candle info</p>
 <h3 id='http-reqeust'>HTTP REQEUST</h3>
 <p><code>GET /v1/candles/trade:&lt;TimeFrame&gt;:&lt;Symbol&gt;/&lt;Section&gt;</code></p>
-<h3 id='arguments-5'>ARGUMENTS</h3>
+<h3 id='arguments-4'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -652,7 +603,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 </span><span class="p">[</span><span class="mi">1435082571</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the API server time</p>
-<h3 id='http-request-7'>HTTP REQUEST</h3>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
 <p><code>GET /v1/time</code></p>
 <h1 id='rest-authenticated-endpoints'>REST Authenticated Endpoints</h1><h2 id='wallet-balances'>Wallet Balances</h2>
 <blockquote>
