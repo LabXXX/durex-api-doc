@@ -254,9 +254,6 @@
             <a href="#rest-authenticated-endpoints" class="toc-h1 toc-link" data-title="rest-authenticated-endpoints">REST Authenticated Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#authentication" class="toc-h2 toc-link" data-title="authentication">Authentication</a>
-                  </li>
-                  <li>
                     <a href="#wallet-balances" class="toc-h2 toc-link" data-title="wallet-balances">Wallet Balances</a>
                   </li>
                   <li>
@@ -651,25 +648,14 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <p>Get the API server time</p>
 <h3 id='http-request-7'>HTTP REQUEST</h3>
 <p><code>GET /v1/time</code></p>
-<h1 id='rest-authenticated-endpoints'>REST Authenticated Endpoints</h1><h2 id='authentication'>Authentication</h2>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight plaintext"><code>curl
-</code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code></code></pre><h3 id='http-request'>HTTP REQUEST</h3>
-<p><code>POST</code></p>
-<h2 id='wallet-balances'>Wallet Balances</h2>
+<h1 id='rest-authenticated-endpoints'>REST Authenticated Endpoints</h1><h2 id='wallet-balances'>Wallet Balances</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances?user_id=a"
 </code></pre>
 <p>See your balances</p>
-<h3 id='http-request-2'>HTTP REQUEST</h3>
+<h3 id='http-request'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/balances</code></p>
 
 <blockquote>
@@ -708,7 +694,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Allow you to request a withdrawal from one of your wallet.</p>
-<h3 id='http-request-3'>HTTP REQUEST</h3>
+<h3 id='http-request-2'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/balances/&lt;Asset&gt;/withdraw</code></p>
 <h3 id='arguments'>ARGUMENTS</h3>
 <table><thead>
@@ -750,7 +736,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Submit a new Order</p>
-<h3 id='http-request-4'>HTTP REQUEST</h3>
+<h3 id='http-request-3'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/order/new</code></p>
 <h3 id='arguments-2'>ARGUMENTS</h3>
 <table><thead>
@@ -820,7 +806,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Cancel an order.</p>
-<h3 id='http-request-5'>HTTP REQUEST</h3>
+<h3 id='http-request-4'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/order/cancel</code></p>
 <h3 id='arguments-3'>ARGUMENTS</h3>
 <table><thead>
@@ -878,7 +864,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"3.00000000"</span><span class="p">,</span><span class="s2">"165.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.</p>
-<h3 id='http-request-6'>HTTP REQUEST</h3>
+<h3 id='http-request-5'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/order/status</code></p>
 <h3 id='arguments-4'>ARGUMENTS</h3>
 <table><thead>
@@ -938,7 +924,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your active orders.</p>
-<h3 id='http-request-7'>HTTP REQUEST</h3>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;</code></p>
 <h3 id='arguments-5'>ARGUMENTS</h3>
 <table><thead>
@@ -990,7 +976,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns the most recent closed or canceled orders up to circa two weeks ago</p>
-<h3 id='http-request-8'>HTTP REQUEST</h3>
+<h3 id='http-request-7'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;/hist</code></p>
 <h3 id='arguments-6'>ARGUMENTS</h3>
 <table><thead>
@@ -1053,7 +1039,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your past trades.</p>
-<h3 id='http-request-9'>HTTP REQUEST</h3>
+<h3 id='http-request-8'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/trades/&lt;Symbol&gt;/hist</code></p>
 <h3 id='arguments-7'>ARGUMENTS</h3>
 <table><thead>
