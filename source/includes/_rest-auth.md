@@ -1,22 +1,5 @@
 # REST Authenticated Endpoints
 
-## Authentication
-
-> Example request
-
-```curl
-curl
-```
-
-> Example Response
-
-```json
-```
-
-### HTTP REQUEST
-
-`POST`
-
 ## Wallet Balances
 
 > Example request
