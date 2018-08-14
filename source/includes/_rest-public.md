@@ -62,48 +62,6 @@ For a real-time notification we suggest to use websockets and listen to events 2
 
 `GET /v1/platform/status`
 
-## Tickers
-
-> Example request
-
-```curl
-curl https://durex/v1/tickers?symbols=tBTCUSD,tLTCUSD
-```
-
-> Example Response
-
-```json
-[
-  // on trading pairs (ex. tBTCUSD)
-  [
-    SYMBOL,
-    BID,
-    BID_SIZE,
-    ASK,
-    ASK_SIZE,
-    DAILY_CHANGE,
-    DAILY_CHANGE_PERC,
-    LAST_PRICE,
-    VOLUME,
-    HIGH,
-    LOW
-  ]
-  ...
-]
-```
-
-The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.
-
-### HTTP REQUEST
-
-`GET /v1/tickers`
-
-### ARGUMENTS
-
- Parameter | Type | Required | Description
----------- | ---- | -------- | ------------
- symbols | string | Required | The symbols you want information about. ex: tBTCUSD
-
 ## Ticker
 
 > Example request
