@@ -38,7 +38,7 @@ Get a list of valid symbol IDs and the pair details.
 > Example request
 
 ```curl
-curl https://durex/v1/platform/status
+curl -X GET "https://durex/v1/platform/status"
 ```
 
 > Example Response
