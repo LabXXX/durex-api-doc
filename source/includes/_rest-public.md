@@ -67,7 +67,7 @@ For a real-time notification we suggest to use websockets and listen to events 2
 > Example request
 
 ```curl
-curl https://durex/v1/tickers?symbols=tBTCUSD,tLTCUSD
+curl https://durex/v1/tickers
 ```
 
 > Example Response
@@ -97,12 +97,6 @@ The ticker is a high level overview of the state of the market. It shows you the
 ### HTTP REQUEST
 
 `GET /v1/tickers`
-
-### ARGUMENTS
-
- Parameter | Type | Required | Description
----------- | ---- | -------- | ------------
- symbols | string | Required | The symbols you want information about. ex: tBTCUSD
 
 ## Ticker
 
