@@ -141,7 +141,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/trades/tBTCUSD/hist?start=1534228780&end=1534238780&limit=2&offset=1"
+curl -X GET "https://durex/v1/trades/tBTCUSD/hist?start=1534228780&end=1534238780&limit=2&offset=1"
 ```
 
 > Example Response
