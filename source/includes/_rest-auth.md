@@ -190,7 +190,7 @@ Get the status of an order. Is it active? Was it cancelled? To what extent has i
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=a"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=b"
 ```
 
 > Example Response
@@ -240,7 +240,7 @@ View your active orders.
 > Example request
 
 ```curl
-curl https://durex/v1/auth/r/orders/tBTCUSD/hist
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist?user_id=b&start=1534228780&end=1534238780&limit=2&offset=1"
 ```
 
 > Example Response
@@ -249,11 +249,12 @@ curl https://durex/v1/auth/r/orders/tBTCUSD/hist
 [
   [
     OrderId,  // ID,
+    Market,  // SYMBOL,
     OrderType,  // TYPE,
+    Side,
+    UserId,
     CreateTime,  // MTS_CREATE,
     FinishTime,  // MTS_UPDATE,
-    UserId,
-    Market,  // SYMBOL,
     Price,  // PRICE,
     Amount,  // AMOUNT,
     // AMOUNT_ORIG,
@@ -267,6 +268,7 @@ curl https://durex/v1/auth/r/orders/tBTCUSD/hist
     DealMoney,
     DealFee
   ],
+  [9,"tBTCUSD",1,2,"b",1534228785,1534228785,"55.00000000","8.00000000","0.00000000","0.00000000","5.00000000","175.00000000","0.00000000"],
   ...
 ]
 ```
@@ -292,7 +294,7 @@ Returns the most recent closed or canceled orders up to circa two weeks ago
 > Example request
 
 ```curl
-curl https://durex/v1/auth/r/trades/tBTCUSD/hist
+curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist?user_id=b&start=1534228780&end=1534238780&limit=2&offset=1"
 ```
 
 > Example Response
