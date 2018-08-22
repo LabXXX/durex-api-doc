@@ -97,7 +97,7 @@ Submit a new Order
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
- type | string | Required | Either 1(market / 2(limit)
+ type | string | Required | Either 1(market) / 2(limit)
  symbol | string | Required | The name of the symbol (see /symbols).
  side | int | Required | Either 1 (sell) or 2(buy).
  price | float | Required | Price to buy or sell at. Must be positive. No need for market orders.
@@ -251,7 +251,7 @@ curl https://durex/v1/auth/r/orders/tBTCUSD/hist
     OrderId,  // ID,
     OrderType,  // TYPE,
     CreateTime,  // MTS_CREATE,
-    UpdateTime,  // MTS_UPDATE,
+    FinishTime,  // MTS_UPDATE,
     UserId,
     Market,  // SYMBOL,
     Price,  // PRICE,
@@ -261,8 +261,8 @@ curl https://durex/v1/auth/r/orders/tBTCUSD/hist
     // PRICE_AVG
     TakerFee,
     MakerFee,
-    Left,
-    Freeze,
+    // Left,
+    // Freeze,
     DealStock,
     DealMoney,
     DealFee
@@ -282,9 +282,10 @@ Returns the most recent closed or canceled orders up to circa two weeks ago
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | Symbol (tBTCUSD, ...)
- start | string | Optional | Millisecond start time
- end | string | Optional | Millisecond end time
- limit | int32 | Optional | Number of records
+ start | int64 | Optional | Start timestamp
+ end | int64 | Optional | End timestamp
+ limit | uint64 | Optional | Number of records (0: all)
+ offset | uint64 | Optional | Offset position
 
 ## Past Trades
 
@@ -326,6 +327,7 @@ View your past trades.
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | Symbol (tBTCUSD, ...)
- start | string | Optional | Millisecond start time
- end | string | Optional | Millisecond end time
- limit | int32 | Optional | Number of records
+ start | int64 | Optional | Start timestamp
+ end | int64 | Optional | End timestamp
+ limit | uint64 | Optional | Number of records (0: all)
+ offset | uint64 | Optional | Offset position

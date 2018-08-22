@@ -169,9 +169,10 @@ Trades endpoint includes all the pertinent details of the trade, such as price, 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | The symbol you want information about.
- limit | int32 | Optional | Number of records
- start | string | Optional | Millisecond start time
- end | string | Optional | Millisecond end time
+ start | int64 | Optional | Start timestamp
+ end | int64 | Optional | End timestamp
+ limit | uint64 | Optional | Number of records (0: all)
+ offset | uint64 | Optional | Offset position
 
 ## Books
 
@@ -218,7 +219,7 @@ It is provided on a price aggregated basis, with customizable precision.
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | The symbol you want information about. You can find the list of valid symbols by calling the /symbols endpoint.
  Precision | string | Required | Level of price aggregation (0, 0.1, 0.01, 0.001, 0.0001, 0.00001, ...)
- limit | uint | Optional | Number of price points (0: all)
+ limit | uint64 | Optional | Number of price points (0: all)
 
 ## Candles
 
