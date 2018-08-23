@@ -562,26 +562,36 @@ It is provided on a price aggregated basis, with customizable precision.</p>
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl https://durex/v1/candles/trade:1m:tBTCUSD/last
+<pre class="highlight plaintext"><code>curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/last"
 
-curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
+curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/hist"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Section</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"last"</span><span class="w">
 </span><span class="p">[</span><span class="w">
-  </span><span class="err">MTS</span><span class="p">,</span><span class="w">
-  </span><span class="err">OPEN</span><span class="p">,</span><span class="w">
-  </span><span class="err">CLOSE</span><span class="p">,</span><span class="w">
-  </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
-  </span><span class="err">LOW</span><span class="p">,</span><span class="w">
-  </span><span class="err">VOLUME</span><span class="w">
+  </span><span class="err">Time</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS</span><span class="p">,</span><span class="w">
+  </span><span class="err">Open</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">OPEN</span><span class="p">,</span><span class="w">
+  </span><span class="err">Close</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">CLOSE</span><span class="p">,</span><span class="w">
+  </span><span class="err">High</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+  </span><span class="err">Low</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">LOW</span><span class="p">,</span><span class="w">
+  </span><span class="err">Volume</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">VOLUME</span><span class="w">
 </span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="mi">1534230305</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">]</span><span class="w">
 
 </span><span class="err">//</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Section</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"hist"</span><span class="w">
 </span><span class="p">[</span><span class="w">
-  </span><span class="p">[</span><span class="w"> </span><span class="err">MTS</span><span class="p">,</span><span class="w"> </span><span class="err">OPEN</span><span class="p">,</span><span class="w"> </span><span class="err">CLOSE</span><span class="p">,</span><span class="w"> </span><span class="err">HIGH</span><span class="p">,</span><span class="w"> </span><span class="err">LOW</span><span class="p">,</span><span class="w"> </span><span class="err">VOLUME</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">Time</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS</span><span class="p">,</span><span class="w">
+    </span><span class="err">Open</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">OPEN</span><span class="p">,</span><span class="w">
+    </span><span class="err">Close</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">CLOSE</span><span class="p">,</span><span class="w">
+    </span><span class="err">High</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+    </span><span class="err">Low</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">LOW</span><span class="p">,</span><span class="w">
+    </span><span class="err">Volume</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">VOLUME</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="mi">1534230305</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -601,7 +611,7 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <td>TimeFrame</td>
 <td>string</td>
 <td>Required</td>
-<td>Available values: &#39;1m&#39;, &#39;5m&#39;, &#39;15m&#39;, &#39;30m&#39;, &#39;1h&#39;, &#39;3h&#39;, &#39;6h&#39;, &#39;12h&#39;, &#39;1D&#39;, &#39;7D&#39;, &#39;14D&#39;, &#39;1M&#39;</td>
+<td>Available values: &#39;1m&#39;, &#39;5m&#39;, &#39;15m&#39;, &#39;30m&#39;, &#39;1h&#39;, &#39;3h&#39;, &#39;6h&#39;, &#39;12h&#39;, &#39;1D&#39;, &#39;7D&#39;, &#39;1M&#39;</td>
 </tr>
 <tr>
 <td>Symbol</td>
@@ -616,12 +626,6 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <td>Available values: &quot;last&quot;, &quot;hist&quot;</td>
 </tr>
 <tr>
-<td>limit</td>
-<td>int32</td>
-<td>Optional</td>
-<td>Number of candles requested</td>
-</tr>
-<tr>
 <td>start</td>
 <td>string</td>
 <td>Optional</td>
@@ -632,6 +636,18 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 <td>string</td>
 <td>Optional</td>
 <td>Filter end (ms)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>uint64</td>
+<td>Optional</td>
+<td>Number of candles requested (0: all)</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>uint64</td>
+<td>Optional</td>
+<td>Offset position</td>
 </tr>
 </tbody></table>
 <h2 id='time'>Time</h2>
