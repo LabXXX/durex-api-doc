@@ -196,7 +196,7 @@ curl -X GET "https://durex/v1/book/tBTCUSD/0?limit=3"
     [
       Price,  // PRICE,
       Amount  // COUNT,
-       // AMOUNT
+      // AMOUNT
     ],
     ["25.00000000","3.00000000"],
     ["50.00000000","2.00000000"],
