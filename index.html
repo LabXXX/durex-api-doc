@@ -269,10 +269,10 @@
                     <a href="#active-order-status" class="toc-h2 toc-link" data-title="active-order-status">Active Order Status</a>
                   </li>
                   <li>
-                    <a href="#active-orders" class="toc-h2 toc-link" data-title="active-orders">Active Orders</a>
+                    <a href="#history-order-status" class="toc-h2 toc-link" data-title="history-order-status">History Order Status</a>
                   </li>
                   <li>
-                    <a href="#history-order-status" class="toc-h2 toc-link" data-title="history-order-status">History Order Status</a>
+                    <a href="#active-orders" class="toc-h2 toc-link" data-title="active-orders">Active Orders</a>
                   </li>
                   <li>
                     <a href="#orders-history" class="toc-h2 toc-link" data-title="orders-history">Orders History</a>
@@ -892,6 +892,64 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <td>The order ID given by /order/new.</td>
 </tr>
 </tbody></table>
+<h2 id='history-order-status'>History Order Status</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&amp;user_id=b&amp;order_id=9"
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
+  </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Side</span><span class="p">,</span><span class="w">
+  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
+  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">FinishTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
+  </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
+  </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Left</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Freeze</span><span class="p">,</span><span class="w">
+  </span><span class="err">DealStock</span><span class="p">,</span><span class="w">
+  </span><span class="err">DealMoney</span><span class="p">,</span><span class="w">
+  </span><span class="err">DealFee</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Get the status of an closed or canceled order.</p>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
+<p><code>POST /v1/auth/r/order/status/hist</code></p>
+<h3 id='arguments-5'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Required</td>
+<td>Symbol (tBTCUSD, ...)</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>int64</td>
+<td>Required</td>
+<td>The order ID given by /order/new.</td>
+</tr>
+</tbody></table>
 <h2 id='active-orders'>Active Orders</h2>
 <blockquote>
 <p>Example request</p>
@@ -928,9 +986,9 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your active orders.</p>
-<h3 id='http-request-6'>HTTP REQUEST</h3>
+<h3 id='http-request-7'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;</code></p>
-<h3 id='arguments-5'>ARGUMENTS</h3>
+<h3 id='arguments-6'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -944,64 +1002,6 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <td>string</td>
 <td>Required</td>
 <td>Symbol (tBTCUSD, ...)</td>
-</tr>
-</tbody></table>
-<h2 id='history-order-status'>History Order Status</h2>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&amp;user_id=b&amp;order_id=9"
-</code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
-  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-  </span><span class="err">OrderType</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">TYPE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Side</span><span class="p">,</span><span class="w">
-  </span><span class="err">UserId</span><span class="p">,</span><span class="w">
-  </span><span class="err">CreateTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">FinishTime</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_UPDATE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="p">,</span><span class="w">
-  </span><span class="err">Amount</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT_ORIG</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_STATUS</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE_AVG</span><span class="w">
-  </span><span class="err">TakerFee</span><span class="p">,</span><span class="w">
-  </span><span class="err">MakerFee</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">Left</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">Freeze</span><span class="p">,</span><span class="w">
-  </span><span class="err">DealStock</span><span class="p">,</span><span class="w">
-  </span><span class="err">DealMoney</span><span class="p">,</span><span class="w">
-  </span><span class="err">DealFee</span><span class="w">
-</span><span class="p">]</span><span class="w">
-
-</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Get the status of an closed or canceled order.</p>
-<h3 id='http-request-7'>HTTP REQUEST</h3>
-<p><code>POST /v1/auth/r/order/status/hist</code></p>
-<h3 id='arguments-6'>ARGUMENTS</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>Required</td>
-<td>Symbol (tBTCUSD, ...)</td>
-</tr>
-<tr>
-<td>order_id</td>
-<td>int64</td>
-<td>Required</td>
-<td>The order ID given by /order/new.</td>
 </tr>
 </tbody></table>
 <h2 id='orders-history'>Orders History</h2>
