@@ -231,9 +231,9 @@ It is provided on a price aggregated basis, with customizable precision.
 > Example request
 
 ```curl
-curl https://durex/v1/candles/trade:1m:tBTCUSD/last
+curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/last"
 
-curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
+curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/hist"
 ```
 
 > Example Response
@@ -241,17 +241,27 @@ curl https://durex/v1/candles/trade:1m:tBTCUSD/hist
 ```json
 // response with Section = "last"
 [
-  MTS,
-  OPEN,
-  CLOSE,
-  HIGH,
-  LOW,
-  VOLUME
+  Time,  // MTS,
+  Open,  // OPEN,
+  Close,  // CLOSE,
+  High,  // HIGH,
+  Low,  // LOW,
+  Volume  // VOLUME
 ]
+
+[1534230305,"25.00000000","25.00000000","25.00000000","25.00000000","25.00000000"]
 
 // response with Section = "hist"
 [
-  [ MTS, OPEN, CLOSE, HIGH, LOW, VOLUME ],
+  [
+    Time,  // MTS,
+    Open,  // OPEN,
+    Close,  // CLOSE,
+    High,  // HIGH,
+    Low,  // LOW,
+    Volume  // VOLUME
+  ],
+  [1534230305,"25.00000000","25.00000000","25.00000000","25.00000000","25.00000000"],
   ...
 ]
 ```
@@ -266,12 +276,13 @@ Provides a way to access charting candle info
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
- TimeFrame | string | Required | Available values: '1m', '5m', '15m', '30m', '1h', '3h', '6h', '12h', '1D', '7D', '14D', '1M'
+ TimeFrame | string | Required | Available values: '1m', '5m', '15m', '30m', '1h', '3h', '6h', '12h', '1D', '7D', '1M'
  Symbol | string | Required | The symbol you want information about.
  Section | string | Required | Available values: "last", "hist"
- limit | int32 | Optional | Number of candles requested
  start | string | Optional | Filter start (ms)
  end | string | Optional | Filter end (ms)
+ limit | uint64 | Optional | Number of candles requested (0: all)
+ offset | uint64 | Optional | Offset position
 
 ## Time
 
