@@ -302,17 +302,19 @@ curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist?user_id=b&start=153422
 ```json
 [
   [
-    ID,
-    PAIR,
-    MTS_CREATE,
-    ORDER_ID,
-    EXEC_AMOUNT,
-    EXEC_PRICE,
-    ORDER_TYPE,
-    ORDER_PRICE,
-    MAKER,
-    FEE,
-    FEE_CURRENCY
+    OrderId,  // ORDER_ID,
+    DealOrderId,  // MAKER
+    Market,  // PAIR,
+    DealRole,
+    Side,
+    UserId,
+    Time,  // MTS_CREATE
+    Price,  // EXEC_PRICE
+    Amount,
+    Deal,  // EXEC_AMOUNT
+    // ORDER_TYPE,
+    Fee,  // FEE
+    DealFee
   ],
   ...
 ]

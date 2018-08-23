@@ -150,10 +150,13 @@ curl -X GET "https://durex/v1/trades/tBTCUSD/hist?start=1534228780&end=153423878
 // on trading pairs (ex. tBTCUSD)
 [
   [
-    ID,
-    MTS,
-    AMOUNT,
-    PRICE
+    OrderId,  // ID,
+    DealOrderId,
+    DealRole,
+    Side,
+    Time,  // MTS
+    Price,  // PRICE
+    Deal  // AMOUNT
   ]
 ]
 ```
