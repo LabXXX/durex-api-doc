@@ -439,10 +439,13 @@ Even if rare it is important to have a way to notify users.</p>
 <pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
 </span><span class="p">[</span><span class="w">
   </span><span class="p">[</span><span class="w">
-    </span><span class="err">ID</span><span class="p">,</span><span class="w">
-    </span><span class="err">MTS</span><span class="p">,</span><span class="w">
-    </span><span class="err">AMOUNT</span><span class="p">,</span><span class="w">
-    </span><span class="err">PRICE</span><span class="w">
+    </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">DealOrderId</span><span class="p">,</span><span class="w">
+    </span><span class="err">DealRole</span><span class="p">,</span><span class="w">
+    </span><span class="err">Side</span><span class="p">,</span><span class="w">
+    </span><span class="err">Time</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS</span><span class="w">
+    </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
+    </span><span class="err">Deal</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">AMOUNT</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1027,17 +1030,19 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">[</span><span class="w">
-    </span><span class="err">ID</span><span class="p">,</span><span class="w">
-    </span><span class="err">PAIR</span><span class="p">,</span><span class="w">
-    </span><span class="err">MTS_CREATE</span><span class="p">,</span><span class="w">
-    </span><span class="err">ORDER_ID</span><span class="p">,</span><span class="w">
-    </span><span class="err">EXEC_AMOUNT</span><span class="p">,</span><span class="w">
-    </span><span class="err">EXEC_PRICE</span><span class="p">,</span><span class="w">
-    </span><span class="err">ORDER_TYPE</span><span class="p">,</span><span class="w">
-    </span><span class="err">ORDER_PRICE</span><span class="p">,</span><span class="w">
-    </span><span class="err">MAKER</span><span class="p">,</span><span class="w">
-    </span><span class="err">FEE</span><span class="p">,</span><span class="w">
-    </span><span class="err">FEE_CURRENCY</span><span class="w">
+    </span><span class="err">OrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_ID</span><span class="p">,</span><span class="w">
+    </span><span class="err">DealOrderId</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MAKER</span><span class="w">
+    </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">PAIR</span><span class="p">,</span><span class="w">
+    </span><span class="err">DealRole</span><span class="p">,</span><span class="w">
+    </span><span class="err">Side</span><span class="p">,</span><span class="w">
+    </span><span class="err">UserId</span><span class="p">,</span><span class="w">
+    </span><span class="err">Time</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">MTS_CREATE</span><span class="w">
+    </span><span class="err">Price</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">EXEC_PRICE</span><span class="w">
+    </span><span class="err">Amount</span><span class="p">,</span><span class="w">
+    </span><span class="err">Deal</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">EXEC_AMOUNT</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">ORDER_TYPE</span><span class="p">,</span><span class="w">
+    </span><span class="err">Fee</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">FEE</span><span class="w">
+    </span><span class="err">DealFee</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
