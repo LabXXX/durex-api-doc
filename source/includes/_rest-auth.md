@@ -97,9 +97,9 @@ Submit a new Order
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
- type | string | Required | Either 1(market) / 2(limit)
+ type | string | Required | Either 1(market) or 2(limit)
  symbol | string | Required | The name of the symbol (see /symbols).
- side | int | Required | Either 1 (sell) or 2(buy).
+ side | int | Required | Either 1(sell) or 2(buy).
  price | float | Required | Price to buy or sell at. Must be positive. No need for market orders.
  amount | float | Required | Order size: how much you want to buy or sell
  taker_fee | float | Required | Taker fee rate (0 <= taker_fee <= 1)
@@ -316,6 +316,7 @@ curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist?user_id=b&start=153422
     Fee,  // FEE
     DealFee
   ],
+  [8,5,"tBTCUSD",1,2,"b",1534230305,"25.00000000","1.00000000","25.00000000","0.00000000","0.00000000"],
   ...
 ]
 ```

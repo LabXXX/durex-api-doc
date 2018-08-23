@@ -152,12 +152,14 @@ curl -X GET "https://durex/v1/trades/tBTCUSD/hist?start=1534228780&end=153423878
   [
     OrderId,  // ID,
     DealOrderId,
-    DealRole,
+    DealRole,  // 1: Taker 2: Maker
     Side,
     Time,  // MTS
     Price,  // PRICE
     Deal  // AMOUNT
-  ]
+  ],
+  [5,8,2,1,1534230305,"25.00000000","25.00000000"],
+  ...
 ]
 ```
 
@@ -193,8 +195,8 @@ curl -X GET "https://durex/v1/book/tBTCUSD/0?limit=3"
   [  // asks
     [
       Price,  // PRICE,
-      // COUNT,
-      Amount  // AMOUNT
+      Amount  // COUNT,
+       // AMOUNT
     ],
     ["25.00000000","3.00000000"],
     ["50.00000000","2.00000000"],
