@@ -185,6 +185,55 @@ Get the status of an active order.
  symbol | string | Required | Symbol (tBTCUSD, ...)
  order_id | int64 | Required | The order ID given by /order/new.
 
+## History Order Status
+
+> Example request
+
+```curl
+curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&user_id=b&order_id=9"
+```
+
+> Example Response
+
+```json
+[
+  OrderId,  // ID,
+  Market,  // SYMBOL,
+  OrderType,  // TYPE,
+  Side,
+  UserId,
+  CreateTime,  // MTS_CREATE,
+  FinishTime,  // MTS_UPDATE,
+  Price,  // PRICE,
+  Amount,  // AMOUNT,
+  // AMOUNT_ORIG,
+  // ORDER_STATUS,
+  // PRICE_AVG
+  TakerFee,
+  MakerFee,
+  // Left,
+  // Freeze,
+  DealStock,
+  DealMoney,
+  DealFee
+]
+
+[9,"tBTCUSD",1,2,"b",1534228785,1534228785,"55.00000000","8.00000000","0.00000000","0.00000000","5.00000000","175.00000000","0.00000000"]
+```
+
+Get the status of an closed or canceled order.
+
+### HTTP REQUEST
+
+`POST /v1/auth/r/order/status/hist`
+
+### ARGUMENTS
+
+ Parameter | Type | Required | Description
+---------- | ---- | -------- | ------------
+ symbol | string | Required | Symbol (tBTCUSD, ...)
+ order_id | int64 | Required | The order ID given by /order/new.
+
 ## Active Orders
 
 > Example request
@@ -234,55 +283,6 @@ View your active orders.
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | Symbol (tBTCUSD, ...)
-
-## History Order Status
-
-> Example request
-
-```curl
-curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&user_id=b&order_id=9"
-```
-
-> Example Response
-
-```json
-[
-  OrderId,  // ID,
-  Market,  // SYMBOL,
-  OrderType,  // TYPE,
-  Side,
-  UserId,
-  CreateTime,  // MTS_CREATE,
-  FinishTime,  // MTS_UPDATE,
-  Price,  // PRICE,
-  Amount,  // AMOUNT,
-  // AMOUNT_ORIG,
-  // ORDER_STATUS,
-  // PRICE_AVG
-  TakerFee,
-  MakerFee,
-  // Left,
-  // Freeze,
-  DealStock,
-  DealMoney,
-  DealFee
-]
-
-[9,"tBTCUSD",1,2,"b",1534228785,1534228785,"55.00000000","8.00000000","0.00000000","0.00000000","5.00000000","175.00000000","0.00000000"]
-```
-
-Get the status of an closed or canceled order.
-
-### HTTP REQUEST
-
-`POST /v1/auth/r/order/status/hist`
-
-### ARGUMENTS
-
- Parameter | Type | Required | Description
----------- | ---- | -------- | ------------
- symbol | string | Required | Symbol (tBTCUSD, ...)
- order_id | int64 | Required | The order ID given by /order/new.
 
 ## Orders History
 
