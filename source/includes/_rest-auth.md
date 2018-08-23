@@ -185,7 +185,7 @@ Get the status of an active order.
  symbol | string | Required | Symbol (tBTCUSD, ...)
  order_id | int64 | Required | The order ID given by /order/new.
 
-## History Order Status
+## Past Order Status
 
 > Example request
 
@@ -284,7 +284,7 @@ View your active orders.
 ---------- | ---- | -------- | ------------
  Symbol | string | Required | Symbol (tBTCUSD, ...)
 
-## Orders History
+## Past Orders
 
 > Example request
 
