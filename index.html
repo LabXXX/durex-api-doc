@@ -370,18 +370,23 @@ Even if rare it is important to have a way to notify users.</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
   </span><span class="p">[</span><span class="w">
-    </span><span class="err">SYMBOL</span><span class="p">,</span><span class="w">
-    </span><span class="err">BID</span><span class="p">,</span><span class="w">
-    </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
-    </span><span class="err">ASK</span><span class="p">,</span><span class="w">
-    </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
-    </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
-    </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
-    </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
-    </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
-    </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
-    </span><span class="err">LOW</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="w">
+    </span><span class="err">Period</span><span class="p">,</span><span class="w">
+    </span><span class="err">Time</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">BID</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">ASK</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
+    </span><span class="err">Open</span><span class="p">,</span><span class="w">
+    </span><span class="err">Last</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
+    </span><span class="err">High</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+    </span><span class="err">Low</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">LOW</span><span class="w">
+    </span><span class="err">Volume</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
+    </span><span class="err">Deal</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">86400</span><span class="p">,</span><span class="mi">1534204800</span><span class="p">,</span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="s2">"16.00000000"</span><span class="p">,</span><span class="s2">"225.00000000"</span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -399,17 +404,24 @@ Even if rare it is important to have a way to notify users.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">trading</span><span class="w"> </span><span class="err">pairs</span><span class="w"> </span><span class="err">(ex.</span><span class="w"> </span><span class="err">tBTCUSD)</span><span class="w">
 </span><span class="p">[</span><span class="w">
-  </span><span class="err">BID</span><span class="p">,</span><span class="w">
-  </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
-  </span><span class="err">ASK</span><span class="p">,</span><span class="w">
-  </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
-  </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
-  </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
-  </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
-  </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
-  </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
-  </span><span class="err">LOW</span><span class="w">
+  </span><span class="err">Market</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">SYMBOL</span><span class="w">
+  </span><span class="err">Period</span><span class="p">,</span><span class="w">
+  </span><span class="err">Time</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">BID</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">BID_SIZE</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">ASK</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">ASK_SIZE</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">DAILY_CHANGE</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">DAILY_CHANGE_PERC</span><span class="p">,</span><span class="w">
+  </span><span class="err">Open</span><span class="p">,</span><span class="w">
+  </span><span class="err">Last</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">LAST_PRICE</span><span class="p">,</span><span class="w">
+  </span><span class="err">High</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">HIGH</span><span class="p">,</span><span class="w">
+  </span><span class="err">Low</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">LOW</span><span class="w">
+  </span><span class="err">Volume</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">VOLUME</span><span class="p">,</span><span class="w">
+  </span><span class="err">Deal</span><span class="w">
 </span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">86400</span><span class="p">,</span><span class="mi">1534204800</span><span class="p">,</span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"25.00000000"</span><span class="p">,</span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="s2">"16.00000000"</span><span class="p">,</span><span class="s2">"225.00000000"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.</p>
 <h3 id='http-request-4'>HTTP REQUEST</h3>
