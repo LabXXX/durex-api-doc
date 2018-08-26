@@ -76,18 +76,23 @@ curl https://durex/v1/tickers
 [
   // on trading pairs (ex. tBTCUSD)
   [
-    SYMBOL,
-    BID,
-    BID_SIZE,
-    ASK,
-    ASK_SIZE,
-    DAILY_CHANGE,
-    DAILY_CHANGE_PERC,
-    LAST_PRICE,
-    VOLUME,
-    HIGH,
-    LOW
-  ]
+    Market,  // SYMBOL
+    Period,
+    Time,
+    // BID,
+    // BID_SIZE,
+    // ASK,
+    // ASK_SIZE,
+    // DAILY_CHANGE,
+    // DAILY_CHANGE_PERC,
+    Open,
+    Last,  // LAST_PRICE,
+    High,  // HIGH,
+    Low,  // LOW
+    Volume,  // VOLUME,
+    Deal
+  ],
+  ["tBTCUSD",86400,1534204800,"10.00000000","25.00000000","25.00000000","10.00000000","16.00000000","225.00000000"],
   ...
 ]
 ```
@@ -111,17 +116,24 @@ curl https://durex/v1/ticker/tBTCUSD
 ```json
 // on trading pairs (ex. tBTCUSD)
 [
-  BID,
-  BID_SIZE,
-  ASK,
-  ASK_SIZE,
-  DAILY_CHANGE,
-  DAILY_CHANGE_PERC,
-  LAST_PRICE,
-  VOLUME,
-  HIGH,
-  LOW
+  Market,  // SYMBOL
+  Period,
+  Time,
+  // BID,
+  // BID_SIZE,
+  // ASK,
+  // ASK_SIZE,
+  // DAILY_CHANGE,
+  // DAILY_CHANGE_PERC,
+  Open,
+  Last,  // LAST_PRICE,
+  High,  // HIGH,
+  Low,  // LOW
+  Volume,  // VOLUME,
+  Deal
 ]
+
+["tBTCUSD",86400,1534204800,"10.00000000","25.00000000","25.00000000","10.00000000","16.00000000","225.00000000"]
 ```
 
 The ticker is a high level overview of the state of the market. It shows you the current best bid and ask, as well as the last trade price. It also includes information such as daily volume and how much the price has moved over the last day.
