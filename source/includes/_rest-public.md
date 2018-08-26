@@ -67,7 +67,7 @@ For a real-time notification we suggest to use websockets and listen to events 2
 > Example request
 
 ```curl
-curl https://durex/v1/tickers
+curl -X GET "https://durex/v1/tickers"
 ```
 
 > Example Response
@@ -108,7 +108,7 @@ The ticker is a high level overview of the state of the market. It shows you the
 > Example request
 
 ```curl
-curl https://durex/v1/ticker/tBTCUSD
+curl -X GET "https://durex/v1/ticker/tBTCUSD"
 ```
 
 > Example Response
