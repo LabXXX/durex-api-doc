@@ -6,6 +6,7 @@
 
 ```curl
 curl -X POST "https://durex/v1/auth/r/balances?user_id=a"
+curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/json" -d "{\"UserId\":\"a\"}"
 ```
 
 See your balances
@@ -41,7 +42,8 @@ See your balances
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amount=1000"
+curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amount=-1000"
+curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Amount\":\"-1000\"}"
 ```
 
 > Example Response
@@ -73,8 +75,10 @@ Allow you to request a withdrawal from one of your wallet.
 
 ```curl
 curl -X POST "https://durex/v1/auth/w/order/new?type=1&symbol=tBTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=1" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 
 curl -X POST "https://durex/v1/auth/w/order/new?type=2&symbol=tBTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=2" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 ```
 
 > Example Response
@@ -111,6 +115,7 @@ Submit a new Order
 
 ```curl
 curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&user_id=a&order_id=3"
+curl -X POST "https://durex/v1/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
 ```
 
 > Example Response
@@ -142,6 +147,7 @@ Cancel an order.
 
 ```curl
 curl -X POST "https://durex/v1/auth/r/order/status?symbol=tBTCUSD&user_id=b&order_id=9"
+curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"b\",\"OrderId\":9}"
 ```
 
 > Example Response
@@ -191,6 +197,7 @@ Get the status of an active order.
 
 ```curl
 curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&user_id=b&order_id=9"
+curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"b\",\"OrderId\":9}"
 ```
 
 > Example Response
@@ -240,6 +247,7 @@ Get the status of an closed or canceled order.
 
 ```curl
 curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=b"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:application/json" -d "{\"UserId\":\"b\"}"
 ```
 
 > Example Response
@@ -290,6 +298,7 @@ View your active orders.
 
 ```curl
 curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist?user_id=b&start=1534228780&end=1534238780&limit=2&offset=1"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Start\":1534228780,\"End\":1534238780,\"Limit\":2,\"Offset\":1}"
 ```
 
 > Example Response
@@ -344,6 +353,7 @@ Returns the most recent closed or canceled orders up to circa two weeks ago
 
 ```curl
 curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist?user_id=b&start=1534228780&end=1534238780&limit=2&offset=1"
+curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Start\":1534228780,\"End\":1534238780,\"Limit\":2,\"Offset\":1}"
 ```
 
 > Example Response
