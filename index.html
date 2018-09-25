@@ -685,6 +685,7 @@ curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/hist"
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances?user_id=a"
+curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/json" -d "{\"UserId\":\"a\"}"
 </code></pre>
 <p>See your balances</p>
 <h3 id='http-request'>HTTP REQUEST</h3>
@@ -714,7 +715,8 @@ curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/hist"
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amp;amount=1000"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amp;amount=-1000"
+curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Amount\":\"-1000\"}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -755,8 +757,10 @@ curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/hist"
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=1&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=1" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 
 curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new?type=2" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -827,6 +831,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&amp;user_id=a&amp;order_id=3"
+curl -X POST "https://durex/v1/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -867,6 +872,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/order/status?symbol=tBTCUSD&amp;user_id=b&amp;order_id=9"
+curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"b\",\"OrderId\":9}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -925,6 +931,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&amp;user_id=b&amp;order_id=9"
+curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"b\",\"OrderId\":9}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -983,6 +990,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=b"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:application/json" -d "{\"UserId\":\"b\"}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1037,6 +1045,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist?user_id=b&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Start\":1534228780,\"End\":1534238780,\"Limit\":2,\"Offset\":1}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1115,6 +1124,7 @@ curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;us
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist?user_id=b&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
+curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Start\":1534228780,\"End\":1534238780,\"Limit\":2,\"Offset\":1}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
