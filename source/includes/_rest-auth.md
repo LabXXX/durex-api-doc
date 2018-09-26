@@ -74,11 +74,11 @@ Allow you to request a withdrawal from one of your wallet.
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/w/order/new?type=1&symbol=tBTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
-curl -X POST "https://durex/v1/auth/w/order/new?type=1" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
+curl -X POST "https://durex/v1/auth/w/order/new/limit?symbol=tBTCUSD&user_id=a&side=1&price=10&amount=10&taker_fee=0&maker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new/limit" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 
-curl -X POST "https://durex/v1/auth/w/order/new?type=2&symbol=tBTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
-curl -X POST "https://durex/v1/auth/w/order/new?type=2" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
+curl -X POST "https://durex/v1/auth/w/order/new/market?symbol=tBTCUSD&user_id=a&side=1&amount=10&taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 ```
 
 > Example Response
