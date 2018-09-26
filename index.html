@@ -756,11 +756,11 @@ curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:ap
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new?type=1&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
-curl -X POST "https://durex/v1/auth/w/order/new?type=1" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new/limit?symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new/limit" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 
-curl -X POST "https://durex/v1/auth/w/order/new?type=2&amp;symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
-curl -X POST "https://durex/v1/auth/w/order/new?type=2" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
+curl -X POST "https://durex/v1/auth/w/order/new/market?symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
+curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
