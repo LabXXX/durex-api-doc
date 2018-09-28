@@ -830,8 +830,8 @@ curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:applica
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&amp;user_id=a&amp;order_id=3"
-curl -X POST "https://durex/v1/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/cancel?symbol=tBTCUSD&amp;user_id=a&amp;order_id=3"
+curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
 </code></pre>
 <blockquote>
 <p>Example Response</p>
