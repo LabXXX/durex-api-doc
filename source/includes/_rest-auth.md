@@ -114,8 +114,8 @@ Submit a new Order
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/order/cancel?symbol=tBTCUSD&user_id=a&order_id=3"
-curl -X POST "https://durex/v1/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
+curl -X POST "https://durex/v1/auth/w/order/cancel?symbol=tBTCUSD&user_id=a&order_id=3"
+curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
 ```
 
 > Example Response
