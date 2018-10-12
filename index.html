@@ -254,6 +254,9 @@
             <a href="#rest-authenticated-endpoints" class="toc-h1 toc-link" data-title="rest-authenticated-endpoints">REST Authenticated Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#validate-signature" class="toc-h2 toc-link" data-title="validate-signature">Validate Signature</a>
+                  </li>
+                  <li>
                     <a href="#wallet-balances" class="toc-h2 toc-link" data-title="wallet-balances">Wallet Balances</a>
                   </li>
                   <li>
@@ -680,15 +683,30 @@ curl -X GET "https://durex/v1/candles/trade:1m:tBTCUSD/hist"
 <p>Get the API server time</p>
 <h3 id='http-request-7'>HTTP REQUEST</h3>
 <p><code>GET /v1/time</code></p>
-<h1 id='rest-authenticated-endpoints'>REST Authenticated Endpoints</h1><h2 id='wallet-balances'>Wallet Balances</h2>
+<h1 id='rest-authenticated-endpoints'>REST Authenticated Endpoints</h1><h2 id='validate-signature'>Validate Signature</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth?user_id=a"
+curl -X POST "https://durex/v1/auth" -H "Content-Type:application/json" -d '{"UserId":"a","SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
+</code></pre>
+<p>Validate a signature</p>
+<h3 id='http-request'>HTTP REQUEST</h3>
+<p><code>POST /v1/auth</code></p>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">
+</span></code></pre><h2 id='wallet-balances'>Wallet Balances</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances?user_id=a"
-curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/json" -d "{\"UserId\":\"a\"}"
+curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/json" -d '{"UserId":"a","SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <p>See your balances</p>
-<h3 id='http-request'>HTTP REQUEST</h3>
+<h3 id='http-request-2'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/balances</code></p>
 
 <blockquote>
@@ -716,7 +734,7 @@ curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/jso
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw?user_id=b&amp;amount=-1000"
-curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Amount\":\"-1000\"}"
+curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:application/json" -d '{"UserId":"b","Amount":"-1000","SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -728,7 +746,7 @@ curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:ap
 </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Allow you to request a withdrawal from one of your wallet.</p>
-<h3 id='http-request-2'>HTTP REQUEST</h3>
+<h3 id='http-request-3'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/balances/&lt;Asset&gt;/withdraw</code></p>
 <h3 id='arguments'>ARGUMENTS</h3>
 <table><thead>
@@ -757,10 +775,10 @@ curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:ap
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/new/limit?symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;price=10&amp;amount=10&amp;taker_fee=0&amp;maker_fee=0"
-curl -X POST "https://durex/v1/auth/w/order/new/limit" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Price\":\"10\",\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
+curl -X POST "https://durex/v1/auth/w/order/new/limit" -H "Content-Type:application/json" -d '{"Symbol":"tBTCUSD","UserId":"a","Side":1,"Price":"10","Amount":"10","TakerFee":"0","MakerFee":"0","SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 
 curl -X POST "https://durex/v1/auth/w/order/new/market?symbol=tBTCUSD&amp;user_id=a&amp;side=1&amp;amount=10&amp;taker_fee=0"
-curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"Side\":1,\"Amount\":\"10\",\"TakerFee\":\"0\",\"MakerFee\":\"0\",\"SignatureV\":\"v\",\"SignatureR\":\"r\",\"SignatureS\":\"s\"}"
+curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:application/json" -d '{"Symbol":"tBTCUSD","UserId":"a","Side":1,"Amount":"10","TakerFee":"0","MakerFee":"0","SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -772,7 +790,7 @@ curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:applica
 </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Submit a new Order</p>
-<h3 id='http-request-3'>HTTP REQUEST</h3>
+<h3 id='http-request-4'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/order/new</code></p>
 <h3 id='arguments-2'>ARGUMENTS</h3>
 <table><thead>
@@ -831,7 +849,7 @@ curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:applica
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/w/order/cancel?symbol=tBTCUSD&amp;user_id=a&amp;order_id=3"
-curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"a\",\"OrderId\":3}"
+curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application/json" -d '{"Symbol":"tBTCUSD","UserId":"a","OrderId":3,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -843,7 +861,7 @@ curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application
 </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Cancel an order.</p>
-<h3 id='http-request-4'>HTTP REQUEST</h3>
+<h3 id='http-request-5'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/order/cancel</code></p>
 <h3 id='arguments-3'>ARGUMENTS</h3>
 <table><thead>
@@ -872,7 +890,7 @@ curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/order/status?symbol=tBTCUSD&amp;user_id=b&amp;order_id=9"
-curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"b\",\"OrderId\":9}"
+curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application/json" -d '{"Symbol":"tBTCUSD","UserId":"b","OrderId":9,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -902,7 +920,7 @@ curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application
 </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"3.00000000"</span><span class="p">,</span><span class="s2">"165.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the status of an active order.</p>
-<h3 id='http-request-5'>HTTP REQUEST</h3>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/order/status</code></p>
 <h3 id='arguments-4'>ARGUMENTS</h3>
 <table><thead>
@@ -931,7 +949,7 @@ curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/order/status/hist?symbol=tBTCUSD&amp;user_id=b&amp;order_id=9"
-curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:application/json" -d "{\"Symbol\":\"tBTCUSD\",\"UserId\":\"b\",\"OrderId\":9}"
+curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:application/json" -d '{"Symbol":"tBTCUSD","UserId":"b","OrderId":9,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -961,7 +979,7 @@ curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:applic
 </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the status of an closed or canceled order.</p>
-<h3 id='http-request-6'>HTTP REQUEST</h3>
+<h3 id='http-request-7'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/order/status/hist</code></p>
 <h3 id='arguments-5'>ARGUMENTS</h3>
 <table><thead>
@@ -990,7 +1008,7 @@ curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:applic
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD?user_id=b"
-curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:application/json" -d "{\"UserId\":\"b\"}"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:application/json" -d '{"UserId":"b","SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1022,7 +1040,7 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:applicati
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your active orders.</p>
-<h3 id='http-request-7'>HTTP REQUEST</h3>
+<h3 id='http-request-8'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;</code></p>
 <h3 id='arguments-6'>ARGUMENTS</h3>
 <table><thead>
@@ -1045,7 +1063,7 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:applicati
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist?user_id=b&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
-curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Start\":1534228780,\"End\":1534238780,\"Limit\":2,\"Offset\":1}"
+curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:application/json" -d '{"UserId":"b","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1077,7 +1095,7 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:appl
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns the most recent closed or canceled orders up to circa two weeks ago</p>
-<h3 id='http-request-8'>HTTP REQUEST</h3>
+<h3 id='http-request-9'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;/hist</code></p>
 <h3 id='arguments-7'>ARGUMENTS</h3>
 <table><thead>
@@ -1124,7 +1142,7 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:appl
 <p>Example request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist?user_id=b&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
-curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist" -H "Content-Type:application/json" -d "{\"UserId\":\"b\",\"Start\":1534228780,\"End\":1534238780,\"Limit\":2,\"Offset\":1}"
+curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist" -H "Content-Type:application/json" -d '{"UserId":"b","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1150,7 +1168,7 @@ curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist" -H "Content-Type:appl
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your past trades.</p>
-<h3 id='http-request-9'>HTTP REQUEST</h3>
+<h3 id='http-request-10'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/trades/&lt;Symbol&gt;/hist</code></p>
 <h3 id='arguments-8'>ARGUMENTS</h3>
 <table><thead>
