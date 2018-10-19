@@ -168,7 +168,7 @@ curl -X GET "https://durex/v1/trades/tBTCUSD/hist?start=1534228780&end=153423878
     Side,
     Time,  // MTS
     Price,  // PRICE
-    Deal  // AMOUNT
+    Amount  // AMOUNT
   ],
   [5,8,2,1,1534230305,"25.00000000","25.00000000"],
   ...
