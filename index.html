@@ -260,6 +260,9 @@
                     <a href="#wallet-balances" class="toc-h2 toc-link" data-title="wallet-balances">Wallet Balances</a>
                   </li>
                   <li>
+                    <a href="#past-balances" class="toc-h2 toc-link" data-title="past-balances">Past Balances</a>
+                  </li>
+                  <li>
                     <a href="#withdrawal" class="toc-h2 toc-link" data-title="withdrawal">Withdrawal</a>
                   </li>
                   <li>
@@ -729,7 +732,69 @@ curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/jso
   </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"USD"</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="s2">"bidMakerMoney"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"400.00000000"</span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h2 id='withdrawal'>Withdrawal</h2>
+</span></code></pre><h2 id='past-balances'>Past Balances</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances/hist?user_id=b&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
+curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:application/json" -d '{"UserId":"b","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="err">UserId</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">Asset</span><span class="p">,</span><span class="w">
+    </span><span class="err">OpId</span><span class="p">,</span><span class="w">
+    </span><span class="err">SubOpId</span><span class="p">,</span><span class="w">
+    </span><span class="err">OpType</span><span class="p">,</span><span class="w">
+    </span><span class="err">OpTime</span><span class="w">
+    </span><span class="err">Change</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"BTC"</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"withdraw"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"-5.00000000"</span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"USD"</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"deposit"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>See your deposit / withdraw history</p>
+<h3 id='http-request-3'>HTTP REQUEST</h3>
+<p><code>POST /v1/auth/r/balances/hist</code></p>
+<h3 id='arguments'>ARGUMENTS</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start</td>
+<td>int64</td>
+<td>Optional</td>
+<td>Start timestamp</td>
+</tr>
+<tr>
+<td>end</td>
+<td>int64</td>
+<td>Optional</td>
+<td>End timestamp</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>uint64</td>
+<td>Optional</td>
+<td>Number of records (0: all)</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>uint64</td>
+<td>Optional</td>
+<td>Offset position</td>
+</tr>
+</tbody></table>
+<h2 id='withdrawal'>Withdrawal</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
@@ -746,9 +811,9 @@ curl -X POST "https://durex/v1/auth/w/balances/USD/withdraw" -H "Content-Type:ap
 </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Allow you to request a withdrawal from one of your wallet.</p>
-<h3 id='http-request-3'>HTTP REQUEST</h3>
+<h3 id='http-request-4'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/balances/&lt;Asset&gt;/withdraw</code></p>
-<h3 id='arguments'>ARGUMENTS</h3>
+<h3 id='arguments-2'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -790,9 +855,9 @@ curl -X POST "https://durex/v1/auth/w/order/new/market" -H "Content-Type:applica
 </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Submit a new Order</p>
-<h3 id='http-request-4'>HTTP REQUEST</h3>
+<h3 id='http-request-5'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/order/new</code></p>
-<h3 id='arguments-2'>ARGUMENTS</h3>
+<h3 id='arguments-3'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -861,9 +926,9 @@ curl -X POST "https://durex/v1/auth/w/order/cancel" -H "Content-Type:application
 </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Cancel an order.</p>
-<h3 id='http-request-5'>HTTP REQUEST</h3>
+<h3 id='http-request-6'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/w/order/cancel</code></p>
-<h3 id='arguments-3'>ARGUMENTS</h3>
+<h3 id='arguments-4'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -920,9 +985,9 @@ curl -X POST "https://durex/v1/auth/r/order/status" -H "Content-Type:application
 </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"3.00000000"</span><span class="p">,</span><span class="s2">"165.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the status of an active order.</p>
-<h3 id='http-request-6'>HTTP REQUEST</h3>
+<h3 id='http-request-7'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/order/status</code></p>
-<h3 id='arguments-4'>ARGUMENTS</h3>
+<h3 id='arguments-5'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -979,9 +1044,9 @@ curl -X POST "https://durex/v1/auth/r/order/status/hist" -H "Content-Type:applic
 </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="s2">"tBTCUSD"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"55.00000000"</span><span class="p">,</span><span class="s2">"8.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">,</span><span class="s2">"0.00000000"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get the status of an closed or canceled order.</p>
-<h3 id='http-request-7'>HTTP REQUEST</h3>
+<h3 id='http-request-8'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/order/status/hist</code></p>
-<h3 id='arguments-5'>ARGUMENTS</h3>
+<h3 id='arguments-6'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1040,9 +1105,9 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD" -H "Content-Type:applicati
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your active orders.</p>
-<h3 id='http-request-8'>HTTP REQUEST</h3>
+<h3 id='http-request-9'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;</code></p>
-<h3 id='arguments-6'>ARGUMENTS</h3>
+<h3 id='arguments-7'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1095,9 +1160,9 @@ curl -X POST "https://durex/v1/auth/r/orders/tBTCUSD/hist" -H "Content-Type:appl
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns the most recent closed or canceled orders up to circa two weeks ago</p>
-<h3 id='http-request-9'>HTTP REQUEST</h3>
+<h3 id='http-request-10'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/orders/&lt;Symbol&gt;/hist</code></p>
-<h3 id='arguments-7'>ARGUMENTS</h3>
+<h3 id='arguments-8'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1168,9 +1233,9 @@ curl -X POST "https://durex/v1/auth/r/trades/tBTCUSD/hist" -H "Content-Type:appl
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>View your past trades.</p>
-<h3 id='http-request-10'>HTTP REQUEST</h3>
+<h3 id='http-request-11'>HTTP REQUEST</h3>
 <p><code>POST /v1/auth/r/trades/&lt;Symbol&gt;/hist</code></p>
-<h3 id='arguments-8'>ARGUMENTS</h3>
+<h3 id='arguments-9'>ARGUMENTS</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
