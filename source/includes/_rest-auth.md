@@ -80,8 +80,8 @@ curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:applicatio
     OpTime
     Change
   ],
-  ["a","BTC",9,0,"withdraw",1534228785,"-5.00000000"],
-  ["a","USD",9,0,"deposit",1534228785,"175.00000000"],
+  ["a","BTC",8,0,"withdraw",1534228785,"-5.00000000"],
+  ["a","USD",7,0,"deposit",1534228785,"175.00000000"],
   ...
 ]
 ```
