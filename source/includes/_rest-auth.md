@@ -63,8 +63,8 @@ See your balances
 > Example request
 
 ```curl
-curl -X POST "https://durex/v1/auth/r/balances/hist?user_id=b&start=1534228780&end=1534238780&limit=2&offset=1"
-curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:application/json" -d '{"UserId":"b","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
+curl -X POST "https://durex/v1/auth/r/balances/USD/hist?user_id=b&op_type=withdraw&start=1534228780&end=1534238780&limit=2&offset=1"
+curl -X POST "https://durex/v1/auth/r/balances/USD/hist" -H "Content-Type:application/json" -d '{"UserId":"b","OpType":"withdraw","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 ```
 
 > Example Response
@@ -80,7 +80,7 @@ curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:applicatio
     OpTime
     Change
   ],
-  ["a","BTC",8,0,"withdraw",1534228785,"-5.00000000"],
+  ["a","USD",8,0,"withdraw",1534228785,"-5.00000000"],
   ["a","USD",7,0,"deposit",1534228785,"175.00000000"],
   ...
 ]
@@ -90,12 +90,13 @@ See your deposit / withdraw history
 
 ### HTTP REQUEST
 
-`POST /v1/auth/r/balances/hist`
+`POST /v1/auth/r/balances/<Asset>/hist`
 
 ### ARGUMENTS
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
+ op_type | string | Optional | Deposit or withdraw, null for all
  start | int64 | Optional | Start timestamp
  end | int64 | Optional | End timestamp
  limit | uint64 | Optional | Number of records (0: all)
