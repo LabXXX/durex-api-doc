@@ -736,8 +736,8 @@ curl -X POST "https://durex/v1/auth/r/balances" -H "Content-Type:application/jso
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances/hist?user_id=b&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
-curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:application/json" -d '{"UserId":"b","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
+<pre class="highlight plaintext"><code>curl -X POST "https://durex/v1/auth/r/balances/USD/hist?user_id=b&amp;op_type=withdraw&amp;start=1534228780&amp;end=1534238780&amp;limit=2&amp;offset=1"
+curl -X POST "https://durex/v1/auth/r/balances/USD/hist" -H "Content-Type:application/json" -d '{"UserId":"b","OpType":"withdraw","Start":1534228780,"End":1534238780,"Limit":2,"Offset":1,"SignatureM":[{"type":"string","name":"...","value":"..."}],"SignatureV":"v","SignatureR":"r","SignatureS":"s"}'
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -752,14 +752,14 @@ curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:applicatio
     </span><span class="err">OpTime</span><span class="w">
     </span><span class="err">Change</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"BTC"</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"withdraw"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"-5.00000000"</span><span class="p">],</span><span class="w">
+  </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"USD"</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"withdraw"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"-5.00000000"</span><span class="p">],</span><span class="w">
   </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"USD"</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"deposit"</span><span class="p">,</span><span class="mi">1534228785</span><span class="p">,</span><span class="s2">"175.00000000"</span><span class="p">],</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>See your deposit / withdraw history</p>
 <h3 id='http-request-3'>HTTP REQUEST</h3>
-<p><code>POST /v1/auth/r/balances/hist</code></p>
+<p><code>POST /v1/auth/r/balances/&lt;Asset&gt;/hist</code></p>
 <h3 id='arguments'>ARGUMENTS</h3>
 <table><thead>
 <tr>
@@ -769,6 +769,12 @@ curl -X POST "https://durex/v1/auth/r/balances/hist" -H "Content-Type:applicatio
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>op_type</td>
+<td>string</td>
+<td>Optional</td>
+<td>Deposit or withdraw, null for all</td>
+</tr>
 <tr>
 <td>start</td>
 <td>int64</td>
