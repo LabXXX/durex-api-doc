@@ -96,7 +96,7 @@ See your deposit / withdraw history
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
- op_type | string | Optional | Deposit or withdraw, null for all
+ op_type | string | Optional | Deposit or withdraw ("": all)
  start | int64 | Optional | Start timestamp
  end | int64 | Optional | End timestamp
  limit | uint64 | Optional | Number of records (0: all)
