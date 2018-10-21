@@ -96,6 +96,7 @@ See your deposit / withdraw history
 
  Parameter | Type | Required | Description
 ---------- | ---- | -------- | ------------
+ Asset | string | Required | Currency (USD, etc)
  op_type | string | Optional | Deposit or withdraw ("": all)
  start | int64 | Optional | Start timestamp
  end | int64 | Optional | End timestamp
