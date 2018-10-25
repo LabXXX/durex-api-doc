@@ -19,10 +19,12 @@ curl -X GET "https://durex/v1/symbols"
     StockPrec,  // PRICE_PRECISION,
     MoneyPrec,
     FeePrec,
-    MinAmount  // MINIMUM_ORDER_SIZE,
+    MinAmount,  // MINIMUM_ORDER_SIZE,
     // MAXIMUM_ORDER_SIZE
+    TakerFeeRate,
+    MakerFeeRate
   ],
-  ["tBTCUSD","BTC","USD",8,8,8,"0.01"],
+  ["tBTCUSD","BTC","USD",8,8,8,"0.01","0.01","0.01"],
   ...
 ]
 ```
